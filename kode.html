@@ -13,36 +13,38 @@
     <p id="koden">Koden:</p>
 </body>
 <script>
-    var ting = document.getElementById("koden").innerText;
+    var kodenMin = document.getElementById("koden").innerHTML;
+    var passord = "Koden:3812"
     function add1() {
-        document.getElementById("koden").innerHTML += "1";
+    document.getElementById("koden").innerHTML += "1";
     }
     function add2() {
-        document.getElementById("koden").innerHTML += "2";
+    document.getElementById("koden").innerHTML += "2";
     }
     function add3() {
-        document.getElementById("koden").innerHTML += "3";
+    document.getElementById("koden").innerHTML += "3";
     }
     function add4() {
-        document.getElementById("koden").innerHTML += "4";
+    document.getElementById("koden").innerHTML += "4";
     }
     function add5() {
-        document.getElementById("koden").innerHTML += "5";
+    document.getElementById("koden").innerHTML += "5";
     }
     function add6() {
-        document.getElementById("koden").innerHTML += "6";
+    document.getElementById("koden").innerHTML += "6";
     }
     function add7() {
-        document.getElementById("koden").innerHTML += "7";
+    document.getElementById("koden").innerHTML += "7";
     }
     function add8() {
-        document.getElementById("koden").innerHTML += "8";
+    document.getElementById("koden").innerHTML += "8";
     }
     function add9() {
-        document.getElementById("koden").innerHTML += "9";
+    document.getElementById("koden").innerHTML += "9";
     }
-    //if(document.getElementById("koden").innerText == "Koden:3812"){
-    //    alert("hei")
-    //}
+    if(document.getElementById("koden").textContent === passord){
+        alert("hei")
+    }
+    console.log(passord,kodenMin);
 </script>
 </html>
