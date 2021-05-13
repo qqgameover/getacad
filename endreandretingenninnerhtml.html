@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .selected {
+        font-weight: bold;
+    }
+    div.selected::after {
+        content: "🡄";
+    }
+    div.selected::before {
+        content: "🡆";
+    }
+    .stilig {
+        font-family: system-ui;
+    }
+    .stilig2 {
+        border-style: solid;
+        border-color: black;
+    }
+    .stilig3 {
+        text-align: center;
+    }
+    .stilig4 {
+        background-color: crimson;
+    }
+    .stilig5 {
+        background-color: aliceblue;
+    }
+</style>
+<body>
+    <div id="1" onclick="toggleStyle(this)">1</div>
+    <div id="2" onclick="toggleStyle(this)">2</div>
+    
+    <input id="chk1" type="checkbox" onchange="toggleStyle()" />
+    <input id="chk2" type="checkbox" onchange="toggleStyle()" />
+    <input id="chk3" type="checkbox" onchange="toggleStyle()" />
+    <input id="chk4" type="checkbox" onchange="toggleStyle()" />
+    <input id="chk5" type="checkbox" onchange="toggleStyle()" />
+</body>
+<script> 
+    function toggleStyle(selectedElement) {
+            selectedElement.classList.toggle("selected");
+            var isChecked = document.getElementById('chk1').checked;
+            var isChecked2 = document.getElementById('chk2').checked;
+            var isChecked3 = document.getElementById('chk3').checked;
+            var isChecked4 = document.getElementById('chk4').checked;
+            var isChecked5 = document.getElementById('chk5').checked;
+
+            selectedElement.classList.toggle("stilig", isChecked);
+            selectedElement.classList.toggle("stilig2", isChecked2);
+            selectedElement.classList.toggle("stilig3", isChecked3);
+            selectedElement.classList.toggle("stilig4", isChecked4);
+            selectedElement.classList.toggle("stilig5", isChecked5);
+
+            document.getElementById('chk1').checked = selectedDiv.classList.contains('stilig');
+    }
+</script>
+</html>
