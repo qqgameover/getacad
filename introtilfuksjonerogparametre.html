@@ -5,21 +5,18 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body id="1" onload="testMeg(a)">
-    <p>Ferdighet 2a - Alternative eventhandlere: onchange osv.</p>
-    <h3 onmouseover="testMeg(d)" onmouseout="testMeg(e)">Hei!</h3>
+<body id="1" onload="testOn('<li>onload</li>')">
+    <h3 id="title"onmouseover="testOn('<li>onmouseover</li>')" onmouseout="testOn('<li>onmouseout</li>)'">Hei!</h3>
     <h2 id="info">Hallo!</h2>
+    <input type="text" onchange="testOn('<li>onchange</li>')" oninput="testOn('<li>oninput</li>')" />
+    <p id="info"></p>
 
-    <script>
-        function testMeg(a, b, c, d, e) {
-            document.body.innerHTML +=`
-            <input type="text" onchange="testMeg(b)" oninput="testMeg()" />
-            a.innerHTML += '<li>onload</li>';
-            b.innerHTML += '<li>onchange</li>';
-            c.innerHTML += '<li>oninput</li>';
-            d.innerHTML += '<li>onmouseover</li>';
-            e.innerHTML += '<li>onmouseout</li>';`
+
+
+<script>
+        function testOn(Lista) {
+            document.getElementById("info").innerHTML += Lista;
         }
-    </script>
+</script>
 </body>
 </html>
