@@ -6,14 +6,18 @@
     <title></title>
 </head>
 <body id="1" onload="testOn('<li>onload</li>')">
-    <h3 id="title"onmouseover="testOn('<li>onmouseover</li>')" onmouseout="testOn('<li>onmouseout</li>)'">Hei!</h3>
+    
     <h2 id="info">Hallo!</h2>
+   
     <input type="text" onchange="testOn('<li>onchange</li>')" oninput="testOn('<li>oninput</li>')" />
-    <p id="info"></p>
 
+    <h3 id="title"onmouseover="testOn('<li>onmouseover</li>')" onmouseout="testOn('<li>onmouseout</li>')">TEST TEST TEST</h3>
+    
+    <p id="info"></p>
+    
 <script>
         function testOn(Lista) {
-            document.getElementById("info").innerHTML += Lista;
+            document.getElementById("info").innerHTML += Lista; 
         }
 </script>
 </body>
