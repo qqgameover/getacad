@@ -52,8 +52,7 @@
     var chk4 = document.getElementById("chk4");
     var chk5 = document.getElementById("chk5");
 
-    var divs = document.getElementsByTagName("div");
-    var selectedElement = document.getElementById("1");
+    var selectedElement = div1; //Velger den første diven som selectedElement til å starte med. 
     selectedElemented(selectedElement);
 
     function selectedElemented(x) {
@@ -61,14 +60,14 @@
             selectedElement = x;
             selectedElement.classList.add("selected");
 
-            chk1.checked = selectedElement.classList.contains("chk1");
+            chk1.checked = selectedElement.classList.contains("chk1"); //samme som classnavnet bare for å gjøre ting lettere. 
             chk2.checked = selectedElement.classList.contains("chk2");
             chk3.checked = selectedElement.classList.contains("chk3");
             chk4.checked = selectedElement.classList.contains("chk4");
             chk5.checked = selectedElement.classList.contains("chk5");
     }
     function checkbox(huketAv) {
-        selectedElement.classList.toggle(huketAv.id, huketAv.checked);
+        selectedElement.classList.toggle(huketAv.id, huketAv.checked); //toggler classen om den er huket av siden classnamet er det samme som chkBoxene. 
     }
 </script>
 </html>
