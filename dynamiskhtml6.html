@@ -29,9 +29,13 @@
         var sizeSlider = document.getElementById('sizeSlider');
         var textInput = document.getElementById('textInput');
         var colorChooser = document.getElementById('colorChooser');
+        var borderSlider = document.getElementById("borderSlider");
+        var borderChanger = document.getElementById("borderChanger");
 
-        showDiv();
+        showDiv(); //Vi kjører funksjonen så fort siden laster, siden resultatDiv er tom til å starte med.
 
+        //Ved bruk av innerHTML kan vi dynamisk endre hva som helst i diven ved for eksempel userinput.
+        //Vi kan også endre andre ting som style eller class
         function showDiv() {
             resultatDiv.innerHTML = '<div style="'
                 + "text-align: center;"
