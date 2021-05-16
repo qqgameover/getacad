@@ -55,9 +55,9 @@
     var selectedElement = div1; //Velger den første diven som selectedElement til å starte med. 
     selectedElemented(selectedElement);
 
-    function selectedElemented(x) {
+    function selectedElemented(valgt) {
             selectedElement.classList.remove("selected");
-            selectedElement = x;
+            selectedElement = valgt;
             selectedElement.classList.add("selected");
 
             chk1.checked = selectedElement.classList.contains("chk1"); //samme som classnavnet bare for å gjøre ting lettere. 
