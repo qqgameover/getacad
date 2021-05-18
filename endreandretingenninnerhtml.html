@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<style>
+  </head>
+  <style>
     .selected {
-        font-weight: bold;
+      font-weight: bold;
     }
     div.selected::after {
-        content: "🡄";
+      content: "🡄";
     }
     div.selected::before {
-        content: "🡆";
+      content: "🡆";
     }
     .chk1 {
-        font-family: system-ui;
+      font-family: system-ui;
     }
     .chk2 {
-        border-style: solid;
-        border-color: black;
+      border-style: solid;
+      border-color: black;
     }
     .chk3 {
-        text-align: center;
+      text-align: center;
     }
     .chk4 {
-        background-color: crimson;
+      background-color: crimson;
     }
     .chk5 {
-        background-color: aliceblue;
+      background-color: aliceblue;
     }
-</style>
-<body>
+  </style>
+  <body>
     <div id="1" onclick="selectedElemented(this)">1</div>
     <div id="2" onclick="selectedElemented(this)">2</div>
 
@@ -42,9 +42,8 @@
     <input id="chk3" type="checkbox" onchange="checkbox(this)" />
     <input id="chk4" type="checkbox" onchange="checkbox(this)" />
     <input id="chk5" type="checkbox" onchange="checkbox(this)" />
-</body>
-<script>
-    
+  </body>
+  <script>
     var div1 = document.getElementById("1");
     var chk1 = document.getElementById("chk1");
     var chk2 = document.getElementById("chk2");
@@ -52,22 +51,22 @@
     var chk4 = document.getElementById("chk4");
     var chk5 = document.getElementById("chk5");
 
-    var selectedElement = div1; //Velger den første diven som selectedElement til å starte med. 
+    var selectedElement = div1; //Velger den første diven som selectedElement til å starte med.
     selectedElemented(selectedElement);
 
     function selectedElemented(valgt) {
-            selectedElement.classList.remove("selected");
-            selectedElement = valgt;
-            selectedElement.classList.add("selected");
+      selectedElement.classList.remove("selected");
+      selectedElement = valgt;
+      selectedElement.classList.add("selected");
 
-            chk1.checked = selectedElement.classList.contains("chk1"); //samme som classnavnet bare for å gjøre ting lettere. 
-            chk2.checked = selectedElement.classList.contains("chk2");
-            chk3.checked = selectedElement.classList.contains("chk3");
-            chk4.checked = selectedElement.classList.contains("chk4");
-            chk5.checked = selectedElement.classList.contains("chk5");
+      chk1.checked = selectedElement.classList.contains("chk1"); //samme som classnavnet bare for å gjøre ting lettere.
+      chk2.checked = selectedElement.classList.contains("chk2");
+      chk3.checked = selectedElement.classList.contains("chk3");
+      chk4.checked = selectedElement.classList.contains("chk4");
+      chk5.checked = selectedElement.classList.contains("chk5");
     }
     function checkbox(huketAv) {
-        selectedElement.classList.toggle(huketAv.id, huketAv.checked); //toggler classen om den er huket av siden classnamet er det samme som chkBoxene. 
+      selectedElement.classList.toggle(huketAv.id, huketAv.checked); //toggler classen om den er huket av siden classnamet er det samme som chkBoxene.
     }
-</script>
+  </script>
 </html>
