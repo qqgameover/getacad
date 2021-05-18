@@ -21,7 +21,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid #555;
+        border: 1px solid black;
     }
     img {
         overflow: hidden;
@@ -29,9 +29,17 @@
 </style>
 <body>
     <div class="page">
-    <div class="box"><img src="https://data.whicdn.com/images/196676800/original.jpg"/></div> <div class="box">2</div> <div class="box">3</div>
+    <div class="box" id="box1"><img onclick="hei()" id="img1" src="https://www.getacademy.no/img/terje.a138726e.jpeg"/></div> <div class="box">2</div> <div class="box">3</div>
     <div class="box">4</div> <div class="box">5</div> <div class="box">6</div>
     <div class="box">7</div> <div class="box">8</div> <div class="box">9</div>
     </div>
 </body>
+<script>
+    var boxEn = document.getElementById("box1");
+    function hei() {
+        document.getElementById("img1").setAttribute("src", "https://data.whicdn.com/images/196676800/original.jpg");
+    }
+    console.log(boxEn);
+
+</script>
 </html>
