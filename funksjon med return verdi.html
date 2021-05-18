@@ -56,6 +56,16 @@
                 tilfeldigTallEllerBokstavABCDEF();
         }
 
+        function tilfeldigOrd() {
+            let bokstav1 = tilfeldigTallEllerBokstavNORSK();
+            let bokstav2 = tilfeldigTallEllerBokstavNORSK();
+            let bokstav3 = tilfeldigTallEllerBokstavNORSK();
+            let bokstav4 = tilfeldigTallEllerBokstavNORSK();
+            let bokstav5 = tilfeldigTallEllerBokstavNORSK();
+            return(bokstav1 + bokstav2 + bokstav3 + bokstav4 + bokstav5);
+
+        }
+
         function tilfeldigTallEllerBokstavNORSK() {
             var bokstav = tilfeldigTall(0, 28);
             if (bokstav === 28) return "å";
@@ -73,16 +83,6 @@
             if (tall < 10) return tall;
             const charCodeA = 'a'.charCodeAt(0);
             return String.fromCharCode(tall - 10 + charCodeA);
-        }
-
-        function tilfeldigOrd() {
-                let bokstav1 = tilfeldigTallEllerBokstavNORSK();
-                let bokstav2 = tilfeldigTallEllerBokstavNORSK();
-                let bokstav3 = tilfeldigTallEllerBokstavNORSK();
-                let bokstav4 = tilfeldigTallEllerBokstavNORSK();
-                let bokstav5 = tilfeldigTallEllerBokstavNORSK();
-                return(bokstav1 + bokstav2 + bokstav3 + bokstav4 + bokstav5);
-
         }
 
         function tilfeldigTall(minimum, maksimum) {
