@@ -33,7 +33,7 @@
 </style>
 <body>
     <div class="page">
-    <div class="box" id="box1"><img onclick="hei()" id="img1" src="https://www.getacademy.no/img/terje.a138726e.jpeg"/></div> <div class="box">2</div> <div class="box">3</div>
+    <div class="box" id="box1"><img onclick="hei()" id="img1" src="https://www.getacademy.no/img/terje.a138726e.jpeg"/></div> <div class="box"><img id="img2" onclick="hei2()" src="https://external-preview.redd.it/wWzhBg7UFdRe3AU0Th7k39Mtx_plkqmTJiQOMa9XuRc.jpg?auto=webp&s=b5557fa0f7832bebcafbf0f82d1b4d3ac28df231"/></div> <div class="box">3</div>
     <div class="box">4</div> <div class="box">5</div> <div class="box"><img src="https://dpegb9ebondhq.cloudfront.net/product_photos/88827304/file_14165a4251_original.png" alt="Cad loaf"></div>
     <div class="box"><img src="https://i.redd.it/vr50ukpo3tz61.jpg" alt="Chess Doggo"></div> <div class="box">8</div> <div class="box">9</div>
     </div>
@@ -42,6 +42,9 @@
     var boxEn = document.getElementById("box1");
     function hei() {
         document.getElementById("img1").setAttribute("src", "https://data.whicdn.com/images/196676800/original.jpg");
+    }
+    function hei2() {
+        document.getElementById("img2").setAttribute("src", "https://i.ibb.co/K96hzFd/imghosting.png");
     }
     console.log(boxEn);
 
