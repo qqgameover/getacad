@@ -19,6 +19,7 @@
       var points = 0;
       var pointsPerClick = 1;
       var smileyIndex = 0;
+      var jukset = "";
 
       // controller
       function doClick() {
@@ -33,6 +34,12 @@
         pointsPerClick++;
         updateView();
       }
+      function duJukser() {
+        jukset = "Du har jukset!";
+        points *= 10;
+        pointsPerClick *= 10;
+        updateView();
+      }
 
       // view
       updateView();
@@ -40,7 +47,8 @@
         var smiley = smileyIndex == 0 ? "😀" : "😁";
         document.getElementById("app").innerHTML = `
                 <div id="image" onclick="doClick()">${smiley}</div>
-                <div id="pointsInfo">${points}</div>
+                <div id="pointsInfo">${points} ${jukset}</div>
+                <button onclick="duJukser()">Vil du jukse?</button>
                 <button onclick="buyUpgrade()">Kjøp oppgradering (10 poeng)</button>
             `;
       }
