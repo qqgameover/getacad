@@ -12,18 +12,18 @@
       <li>Endre på tekstene!</li>
       <li>Prøv også å fylle ut tall: 11, 101, 102</li>
     </ul>
-    <input type="text" id="txt1" oninput="findFirst()" value="Per" /><br />
-    <input type="text" id="txt2" oninput="findFirst()" value="Pål" /><br />
-    <input type="text" id="txt3" oninput="findFirst()" value="Espen" /><br />
+    <input type="text" id="txt1" oninput="updateView()" value="Per" /><br />
+    <input type="text" id="txt2" oninput="updateView()" value="Pål" /><br />
+    <input type="text" id="txt3" oninput="updateView()" value="Espen" /><br />
     <script>
       var infoDiv = document.getElementById("info");
       var txtDiv1 = document.getElementById("txt1");
       var txtDiv2 = document.getElementById("txt2");
       var txtDiv3 = document.getElementById("txt3");
 
-      findFirst();
+      updateView();
 
-      function findFirst() {
+      function updateView() {
         var txt1 = txtDiv1.value;
         var txt2 = txtDiv2.value;
         var txt3 = txtDiv3.value;
