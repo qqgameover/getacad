@@ -18,7 +18,8 @@
 
       function updateView() {
         var nameTxt = personName
-          ? `Hei, ${personName}!`
+          ? `Hei, $
+          {personName}!`
           : "Fyll ut navn i tekstfeltet.";
         var ageTxt = age ? `Du er ${age} år gammel.` : "Velg alder i slideren";
         document.getElementById("app").innerHTML = `
