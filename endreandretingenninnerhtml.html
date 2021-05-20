@@ -36,6 +36,9 @@
   <body>
     <div id="1" onclick="selectedElemented(this)">1</div>
     <div id="2" onclick="selectedElemented(this)">2</div>
+    <div id="3" onclick="selectedElemented(this)">3</div>
+    <div id="4" onclick="selectedElemented(this)">4</div>
+    <div id="5" onclick="selectedElemented(this)">5</div>
 
     <input id="chk1" type="checkbox" onchange="checkbox(this)" />
     <input id="chk2" type="checkbox" onchange="checkbox(this)" />
@@ -66,7 +69,7 @@
       chk5.checked = selectedElement.classList.contains("chk5");
     }
     function checkbox(huketAv) {
-      selectedElement.classList.toggle(huketAv.id, huketAv.checked); //toggler classen om den er huket av siden classnamet er det samme som chkBoxene.
+      selectedElement.classList.toggle(huketAv.id); //toggler classen om den er huket av siden classnamet er det samme som chkBoxene.
     }
   </script>
 </html>
