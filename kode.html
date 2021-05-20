@@ -11,7 +11,6 @@
   </body>
   <script>
     let test = "";
-    updateView();
 
     function add1(x) {
       test += x;
@@ -28,7 +27,7 @@
         alert("Feil kode!");
       }
     }
-
+    updateView();
     function updateView() {
       document.getElementById("app").innerHTML = `
     <button id="1" onclick="add1(1)">1</button><button id="2" onclick="add1(2)">2</button><button id="3" onclick="add1(3)">3</button><br>
