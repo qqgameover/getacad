@@ -10,8 +10,23 @@
     <div id="fluff" style="padding-bottom: 20px">
       Gjør ett valg på hver linje:
     </div>
-
-    Bunn:
+    Medvalgt drikke:
+    <input id="colaDrikke" type="radio" name="drikke" onchange="updateView()" />
+    Cola
+    <input
+      id="pepsiDrikke"
+      type="radio"
+      name="drikke"
+      onchange="updateView()"
+    />
+    Pepsi
+    <input
+      id="fantaDrikke"
+      type="radio"
+      name="drikke"
+      onchange="updateView()"
+    />
+    Fanta</br> Bunn:
     <input id="tykkBunn" type="radio" name="bunn" onchange="updateView()" />Tykk
     <input id="tynnBunn" type="radio" name="bunn" onchange="updateView()" />Tynn
     <br />
@@ -69,6 +84,9 @@
       var strStor = document.getElementById("stor");
       var strMiddels = document.getElementById("middels");
       var strLiten = document.getElementById("liten");
+      let pepsiDrikke = document.getElementById("pepsiDrikke");
+      let colaDrikke = document.getElementById("colaDrikke");
+      let fantaDrikke = document.getElementById("fantaDrikke");
 
       updateView();
 
@@ -80,7 +98,7 @@
           (fyllTaco.checked ||
             fyllKylling.checked ||
             fyllPepperoni.checked ||
-            fyllSkinke.checked) &&
+            fyllSkinke.checked) && (fantaDrikke.checked || colaDrikke.checked || pepsiDrikke) &&
           (strStor.checked || strMiddels.checked || strLiten.checked)
         ) {
           fluffTing.innerHTML = "";
@@ -102,6 +120,13 @@
           if (!strStor.checked && !strMiddels.checked && !strLiten.checked) {
             duharikke += "<li>størrelse</li>";
           }
+          if (
+            !pepsiDrikke.checked &&
+            !colaDrikke.checked &&
+            !fantaDrikke.checked)
+            {
+              duharikke += "<li>Drikke</li>"
+            }
         }
         infoDiv.innerHTML = duharikke;
       }
