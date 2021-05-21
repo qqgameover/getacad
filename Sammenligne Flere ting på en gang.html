@@ -20,15 +20,19 @@
     </select>
     <script>
       var infoDiv = document.getElementById("info");
-      let valgt = document.getElementById("mySelect");
+      var bakgrunn = document.getElementById("background");
+      var valgt = document.getElementById("mySelect");
 
       info();
 
       function info() {
-        let bakgrunn = document.getElementById("background");
         let valgtVerdi = valgt.value;
-        if (valgtVerdi === "Grey" || "Black") bakgrunn.innerHTML += "pink";
-        else bakgrunn.innerHTML += "black";
+        if (valgtVerdi === "Grey" || valgtVerdi === "Black") {
+          //Husk dette til en annen gang, alltid spesefikk.
+          bakgrunn.style.background += "Grey";
+        } else {
+          bakgrunn.style.background += "black";
+        }
         infoDiv.style.background = valgtVerdi;
       }
     </script>
