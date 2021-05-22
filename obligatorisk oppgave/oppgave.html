@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <link rel="stylesheet" href="style.css">
   <body>
-    <input type="text" id="brukernavn" />
-    </br> <input type="text" id="passord"/>
+    <div class="container">
+    <div class="login-page">
+    <input class="logininfo"type="text" id="brukernavn" />
+    </br> <input type="password" class="logininfop" id="passord"/>
     </br> <button id="login" onclick="loggIn(brukernavn.value, passord.value)">Logg inn</button>
-    </br> 
+    </div>
     <div id="app"></div>
+    </div>
+    </br>
   </body>
   <script src="oppgavefunk.js"></script>
 </html>
