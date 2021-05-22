@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>epostTest</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/qunit/qunit-2.9.2.css"
+    />
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script src="epostcheck.js"></script>
+    <script>
+      QUnit.test("fix - 'ikkeEpost'", function (assert) {
+        const actual = epostCheck("terje");
+        const expected = false;
+        assert.equal(actual, expected);
+      });
+
+      QUnit.test("fix - 'faktiskEpost '", function (assert) {
+        const actual = epostCheck("kasper.35@live.no");
+        const expected = true;
+        assert.equal(actual, expected);
+      });
+
+      QUnit.test("fix - ' epost med mellomrom'", function (assert) {
+        const actual = epostCheck("kasper 35@live .no");
+        const expected = false;
+        assert.equal(actual, expected);
+      });
+
+      QUnit.test("fix - ' Epost uten punktum '", function (assert) {
+        const actual = epostCheck("kasper35@liveno");
+        const expected = false;
+        assert.equal(actual, expected);
+      });
+    </script>
+  </body>
+</html>
