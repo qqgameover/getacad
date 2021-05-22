@@ -15,7 +15,7 @@ function loggIn(username, passord) {
   if (!(username === brukerNavn && passord === password))
     if (username === "" || passord === "") {
       infotext =
-        "Du har glemt å skrive passord eller brukernavn, vennligst legg det til!";
+        "Du har glemt å skrive passord og/eller brukernavn, vennligst legg det til!";
       updateView();
       return "mangler noe";
     } else if (username != brukerNavn || passord != password) {
