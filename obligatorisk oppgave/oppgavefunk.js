@@ -61,8 +61,12 @@ function loginupdate() {
 }
 function updateView() {
   appen.innerHTML =
+    '<div class="container">' +
     "<h1>Velkommen, du er nå logget inn!</h1>" +
+    "<p>" +
     tilfeldigOrd() +
+    "</p>" +
     "</br>" +
-    '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"';
+    '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
+    "</div>";
 }
