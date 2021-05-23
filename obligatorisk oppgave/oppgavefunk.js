@@ -38,7 +38,7 @@ function tilfeldigBokstavNORSK() {
   if (bokstav === 27) return "ø";
   if (bokstav === 26) return "æ";
   else {
-    const charCodeA = "a".charCodeAt(0);
+    let charCodeA = "a".charCodeAt(0);
     return String.fromCharCode(bokstav + charCodeA);
   }
 }
