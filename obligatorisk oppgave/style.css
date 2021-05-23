@@ -9,7 +9,7 @@ button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4caf50;
+  background: black;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -27,6 +27,7 @@ p {
   margin: 0px;
   text-align: center;
   font-family: "Roboto", sans-serif;
+  color: whitesmoke;
 }
 
 .container {
@@ -49,12 +50,7 @@ input {
 }
 
 body {
-  background: #76b852;
-  background: -webkit-linear-gradient(right, #76b852, #8dc26f);
-  background: -moz-linear-gradient(right, #76b852, #8dc26f);
-  background: -o-linear-gradient(right, #76b852, #8dc26f);
-  background: linear-gradient(to left, #76b852, #8dc26f);
+  background: rgb(129, 122, 122);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
