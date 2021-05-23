@@ -24,7 +24,6 @@ function loggIn(username, passord) {
       return "error";
     }
   else {
-    infotext = "Velkommen til blabla! Du er nå logget inn";
     passordfield.remove();
     brukernavnfield.remove();
     loggInnKnapp.remove();
