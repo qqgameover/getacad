@@ -29,9 +29,6 @@ function loggIn(username, passord) {
       return "error";
     }
   else {
-    //passordfield.remove();
-    //brukernavnfield.remove();
-    //loggInnKnapp.remove();
     updateView();
     return "loggedin";
   }
@@ -67,7 +64,7 @@ function loginupdate() {
   <div class="login-page">
   <input class="logininfo" type="text" id="brukernavn" placeholder="Brukernavn" oninput="brukerNavnText = this.value "value="${
     brukerNavnText}"/>
-  </br> <input type="password" placeholder="Passord" class="logininfop" id="passord" oninput="passordText = this.value "value ="${
+  </br> <input type="password" placeholder="Passord" id="passord" oninput="passordText = this.value "value ="${
     passordText}"/>
   </br> <button id="login" onclick="loggIn(brukernavn.value, passord.value)">Logg inn</button>
   </div> ${infotext}
