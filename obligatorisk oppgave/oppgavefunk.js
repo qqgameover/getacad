@@ -7,7 +7,6 @@ let html = "";
 let passordText = "";
 let brukerNavnText = "";
 let page = "login";
-let html2 = "";
 
 
 function loggIn(username, passord) {
@@ -62,28 +61,28 @@ function tilfeldigTall(minimum, maksimum) {
 
 function loginupdate() {
   html = `
-  <div class="container">
-  <div class="login-page">
-  <input class="logininfo" type="text" id="brukernavn" placeholder="Brukernavn" oninput="brukerNavnText = this.value "value="${
-    brukerNavnText}"/>
-  </br> <input type="password" placeholder="Passord" id="passord" oninput="passordText = this.value "value ="${
-    passordText}"/>
-  </br> <button id="login" onclick="loggIn(brukernavn.value, passord.value)">Logg inn</button>
-  </div> ${infotext}
-  `;
+    <div class="container">
+    <div class="login-page">
+    <input class="logininfo" type="text" id="brukernavn" placeholder="Brukernavn" oninput="brukerNavnText = this.value "value="${
+      brukerNavnText}"/>
+    </br> <input type="password" placeholder="Passord" id="passord" oninput="passordText = this.value "value ="${
+      passordText}"/>
+    </br> <button id="login" onclick="loggIn(brukernavn.value, passord.value)">Logg inn</button>
+    </div> ${infotext}
+    `;
   appen.innerHTML = html;
 }
 
 function mainpage() {
   html  =     
-  '<div class="container">' +
-  "<h1>Velkommen, du er nå logget inn!</h1>" +
-  "<p>" +
-  tilfeldigOrd() +
-  "</p>" +
-  "</br>" +
-  '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
-  "</div>";
+    '<div class="container">' +
+    "<h1>Velkommen, du er nå logget inn!</h1>" +
+    "<p>" +
+    tilfeldigOrd() +
+    "</p>" +
+    "</br>" +
+    '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
+    "</div>";
   appen.innerHTML = html;
 }
 
