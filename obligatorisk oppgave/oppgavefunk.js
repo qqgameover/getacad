@@ -2,7 +2,6 @@ let appen = document.getElementById("app");
 let brukernavnfield = document.getElementById("brukernavn");
 let passordfield = document.getElementById("passord");
 let loggInnKnapp = document.getElementById("login");
-let loginpage = document.getElementById("loginPage");
 let infotext = "";
 let html = "";
 let passordText = "";
