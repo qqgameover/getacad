@@ -6,8 +6,9 @@ let infotext = "";
 let html = "";
 let passordText = "";
 let brukerNavnText = "";
+let page = "login";
+let html2 = "";
 
-loginupdate();
 
 function loggIn(username, passord) {
   let brukerNavn = "KasperL";
@@ -29,6 +30,7 @@ function loggIn(username, passord) {
       return "error";
     }
   else {
+    page = "mainpage";
     updateView();
     return "loggedin";
   }
@@ -72,14 +74,22 @@ function loginupdate() {
   appen.innerHTML = html;
 }
 
+function mainpage() {
+  appen.innerHTML  =     
+  '<div class="container">' +
+  "<h1>Velkommen, du er nå logget inn!</h1>" +
+  "<p>" +
+  tilfeldigOrd() +
+  "</p>" +
+  "</br>" +
+  '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
+  "</div>";
+}
+updateView();
 function updateView() {
-  appen.innerHTML =
-    '<div class="container">' +
-    "<h1>Velkommen, du er nå logget inn!</h1>" +
-    "<p>" +
-    tilfeldigOrd() +
-    "</p>" +
-    "</br>" +
-    '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
-    "</div>";
+  if (page === "mainpage") {
+    mainpage();
+  } if (page === "login") {
+    loginupdate();
+  }
 }
