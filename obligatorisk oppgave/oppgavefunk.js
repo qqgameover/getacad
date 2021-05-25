@@ -2,7 +2,13 @@ let appen = document.getElementById("app");
 let brukernavnfield = document.getElementById("brukernavn");
 let passordfield = document.getElementById("passord");
 let loggInnKnapp = document.getElementById("login");
+let loginpage = document.getElementById("loginPage");
 let infotext = "";
+let html = "";
+let passordText = "";
+let brukerNavnText = "";
+
+loginupdate();
 
 function loggIn(username, passord) {
   let brukerNavn = "KasperL";
@@ -24,9 +30,9 @@ function loggIn(username, passord) {
       return "error";
     }
   else {
-    passordfield.remove();
-    brukernavnfield.remove();
-    loggInnKnapp.remove();
+    //passordfield.remove();
+    //brukernavnfield.remove();
+    //loggInnKnapp.remove();
     updateView();
     return "loggedin";
   }
@@ -57,8 +63,19 @@ function tilfeldigTall(minimum, maksimum) {
 }
 
 function loginupdate() {
-  appen.innerHTML = infotext;
+  html = `
+  <div class="container">
+  <div class="login-page">
+  <input class="logininfo" type="text" id="brukernavn" placeholder="Brukernavn" oninput="brukerNavnText = this.value "value="${
+    brukerNavnText}"/>
+  </br> <input type="password" placeholder="Passord" class="logininfop" id="passord" oninput="passordText = this.value "value ="${
+    passordText}"/>
+  </br> <button id="login" onclick="loggIn(brukernavn.value, passord.value)">Logg inn</button>
+  </div> ${infotext}
+  `;
+  appen.innerHTML = html;
 }
+
 function updateView() {
   appen.innerHTML =
     '<div class="container">' +
