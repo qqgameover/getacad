@@ -75,7 +75,7 @@ function loginupdate() {
 }
 
 function mainpage() {
-  appen.innerHTML  =     
+  html  =     
   '<div class="container">' +
   "<h1>Velkommen, du er nå logget inn!</h1>" +
   "<p>" +
@@ -84,6 +84,7 @@ function mainpage() {
   "</br>" +
   '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
   "</div>";
+  appen.innerHTML = html;
 }
 
 updateView();
