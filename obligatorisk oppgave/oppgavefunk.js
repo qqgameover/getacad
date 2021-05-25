@@ -1,7 +1,7 @@
-let appen = document.getElementById("app");
-let brukernavnfield = document.getElementById("brukernavn");
-let passordfield = document.getElementById("passord");
-let loggInnKnapp = document.getElementById("login");
+const appen = getDiv("app");
+const brukernavnfield = getDiv("brukernavn");
+const passordfield = getDiv("passord");
+const loggInnKnapp = getDiv("login");
 let infotext = "";
 let html = "";
 let passordText = "";
@@ -11,8 +11,8 @@ let html2 = "";
 
 
 function loggIn(username, passord) {
-  let brukerNavn = "KasperL";
-  let password = "GetErFlott!";
+  const brukerNavn = "KasperL";
+  const password = "GetErFlott!";
 
   if (!(username === brukerNavn && passord === password))
     if (username === "" || passord === "") {
@@ -85,6 +85,7 @@ function mainpage() {
   '<button onclick="updateView()">Trykk på meg for et tilfeldig "ord"' +
   "</div>";
 }
+
 updateView();
 function updateView() {
   if (page === "mainpage") {
@@ -92,4 +93,8 @@ function updateView() {
   } if (page === "login") {
     loginupdate();
   }
+}
+
+function getDiv(id) {
+  return document.getElementById(id);
 }
