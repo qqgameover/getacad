@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+            div.cell {
+                background-color: lightgray;
+                width: 100px;
+                height: 100px;
+                float: left;
+                margin: 2px;
+                font-size: 500%;
+                font-family: helvetica;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            div.first {
+                clear: left;
+            }
+</style>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    var startTime = "";
+    var finishTime = "";
+    var spentMilliseconds = Math.floor(finishTime - startTime);
+    var spentSeconds = spentMilliseconds / 1000;
+    let appen = document.getElementById("app")
+    let board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
+    let html = "";
+
+    updateView();
+
+    function updateView() {
+        for (let i = 0; i < board.length; i++) {
+                let first = i % 5 == 0 ? 'first' : '';
+                html += `<div id="${i}" onclick="getTime(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
+                appen.innerHTML = html;
+    }
+}   
+    function createdTime() {
+        let blankIndexes = Array.from(board.keys()).filter(i => board[i] === '');
+        if (blankIndexes.length === 0) return;
+        let random = Math.floor(Math.random() * blankIndexes.length);
+        board[random] = 'X';
+        startTime = Date.now();
+        updateView();
+    }
+    function getTime(index) {
+        finishTime = "";
+        var spentMilliseconds = Math.floor(finishTime - startTime);
+        var spentSeconds = spentMilliseconds / 1000;
+        html += `${spentSeconds}`
+        updateView();
+    }
+</script>
+</html>
