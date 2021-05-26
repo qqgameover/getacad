@@ -27,36 +27,39 @@
     <div id="app"></div>
 </body>
 <script>
-    var startTime = "";
-    var finishTime = "";
-    var spentMilliseconds = Math.floor(finishTime - startTime);
-    var spentSeconds = spentMilliseconds / 1000;
     let appen = document.getElementById("app")
     let board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
-    let html = "";
+    var startTime = "";
+    var finishedTime = "";
 
     updateView();
 
     function updateView() {
-        for (let i = 0; i < board.length; i++) {
-                let first = i % 5 == 0 ? 'first' : '';
-                html += `<div id="${i}" onclick="getTime(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
-                appen.innerHTML = html;
-    }
-}   
+        let html = "";
+        for (let i = 0; i < 25; i++) {
+            let boards = board[i];
+            let first = i % 5 == 0 ? 'first' : '';
+            html += `<div id="${i}" onclick="getTime(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
+            }
+        appen.innerHTML = html; 
+    }   
+
     function createdTime() {
         let blankIndexes = Array.from(board.keys()).filter(i => board[i] === '');
         if (blankIndexes.length === 0) return;
         let random = Math.floor(Math.random() * blankIndexes.length);
         board[random] = 'X';
-        startTime = Date.now();
+        startTime = new Date().getTime();
         updateView();
+
     }
     function getTime(index) {
-        finishTime = "";
+        finishedTime = new Date().getTime();
         var spentMilliseconds = Math.floor(finishTime - startTime);
         var spentSeconds = spentMilliseconds / 1000;
-        html += `${spentSeconds}`
+        alert(spentMilliseconds)
+        html += "hei";
+        appen.innerHTML += html;
         updateView();
     }
 </script>
