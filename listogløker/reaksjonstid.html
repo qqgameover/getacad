@@ -25,9 +25,11 @@
 </style>
 <body>
     <div id="app"></div>
+    <div id="info"></div>
 </body>
 <script>
     let appen = document.getElementById("app")
+    let infoen = document.getElementById("info")
     let board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
     var startTime = "";
     var finishedTime = "";
@@ -35,12 +37,12 @@
     updateView();
 
     function updateView() {
-        let html = "";
+        let html = '<button onclick="createdTime()">Trykk på meg</button>';
         for (let i = 0; i < 25; i++) {
             let boards = board[i];
             let first = i % 5 == 0 ? 'first' : '';
-            html += `<div id="${i}" onclick="getTime(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;
-            }
+            html += `<div id="${i}" onclick="getTime(${i})" class="cell color${board[i]} ${first}">${board[i]}</div>`;            
+        }
         appen.innerHTML = html; 
     }   
 
@@ -49,18 +51,25 @@
         if (blankIndexes.length === 0) return;
         let random = Math.floor(Math.random() * blankIndexes.length);
         board[random] = 'X';
-        startTime = new Date().getTime();
+        var srtTime = new Date();
+        var startTime = srtTime.getMilliseconds();
         updateView();
 
     }
     function getTime(index) {
-        finishedTime = new Date().getTime();
-        var spentMilliseconds = Math.floor(finishTime - startTime);
-        var spentSeconds = spentMilliseconds / 1000;
-        alert(spentMilliseconds)
-        html += "hei";
-        appen.innerHTML += html;
-        updateView();
-    }
+            if (board[index] == 'X'){
+            let html = "";
+            finTime = new Date();
+            var finishedTime = finTime.getMilliseconds();
+            var spentMilliseconds = Math.floor(finishedTime - startTime);
+            var spentSeconds = spentMilliseconds / 1000;
+            html = `${spentSeconds}`;
+            infoen.innerHTML = html;
+            updateView();
+        } else {
+            return;
+        }
+    } 
+    
 </script>
 </html>
