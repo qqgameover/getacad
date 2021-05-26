@@ -33,7 +33,10 @@
     let board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
     var startTime = "";
     var finishedTime = "";
+    var randomTime = Math.floor(Math.random() * 5000)
 
+    setTimeout(function(){ createdTime()}, randomTime);
+    
     updateView();
 
     function updateView() {
