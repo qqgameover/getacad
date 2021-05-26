@@ -33,14 +33,14 @@
     let board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
     var startTime = "";
     var finishedTime = "";
-    var randomTime = Math.floor(Math.random() * 5000)
+    var randomTime = randomTall();
 
-    setTimeout(function(){ createdTime()}, randomTime);
+    setTimeout(function(){ createdTime()}, randomTall());
     
     updateView();
 
     function updateView() {
-        let html = '<button onclick="createdTime()">Trykk på meg</button>';
+        let html = '<button onclick="tryAgain()">Prøv på nytt</button>';
         for (let i = 0; i < 25; i++) {
             let boards = board[i];
             let first = i % 5 == 0 ? 'first' : '';
@@ -48,6 +48,18 @@
         }
         appen.innerHTML = html; 
     }   
+
+    function tryAgain() {
+        board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
+        updateView()
+        setTimeout(function(){ createdTime()}, randomTall());
+    }
+
+    function randomTall() {
+        var randomTime = Math.floor(Math.random() * 5000);
+        return randomTime;
+    }
+
 
     function createdTime() {
         let blankIndexes = Array.from(board.keys()).filter(i => board[i] === '');
