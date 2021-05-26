@@ -69,28 +69,31 @@
             if (board[index] === '') {
                 board[index] = 'x';
                 setO();
+                show();
+            } for (let i = 0; i < 7; i++) {
+                if (indexatm.toString() == winningCombo[i].toString()) {
+                    show();
+                    return hvemVant()
+                }
             }
-            show();
-            checkwinning();
         }
 
         //HVORFOR FUNKER DET IKKE??????????????????????
-        function checkwinning() {
-            for (let i = 0; i < 8; i++) {
-            if (indexatm.toString() == winningCombo[i].toString()) {
-                return hvemVant();
-            }
-      }
-    }
+        //function checkwinning() {
+            //for (let i = 0; i < 7; i++) {
+            //if (indexatm.toString() == winningCombo[i].toString()) {
+               // return hvemVant();
+            //}
+      //}
+    //}
         function setO() {
             let blankIndexes = Array.from(board.keys()).filter(i => board[i] === '');
             if (blankIndexes.length === 0) return;
             let random = Math.floor(Math.random() * blankIndexes.length);
             let blankIndex = blankIndexes[random];
             board[blankIndex] = 'o';
-            show();
-            checkwinning();
+
         }
-    </script>
+</script>
 </body>
 </html>
