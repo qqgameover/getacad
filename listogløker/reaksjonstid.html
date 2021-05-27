@@ -71,14 +71,14 @@
 
     }
     function getTime(index) {
-            if (board[index] == 'X'){
+        if (board[index] == 'X'){
             let html = "";
             finTime = Date.now();
             var spentMilliseconds = Math.floor(finTime- srtTime);
             var spentSeconds = spentMilliseconds / 1000;
             html = `${spentSeconds}`;
             infoen.innerHTML = html;
-            updateView();
+        updateView();
         } else {
             return;
         }
