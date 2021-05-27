@@ -31,9 +31,9 @@
     let appen = document.getElementById("app")
     let infoen = document.getElementById("info")
     let board = ["","","","","","","","","","","","","","","","","","","","","","","","",""]
-    var startTime = "";
-    var finishedTime = "";
     var randomTime = randomTall();
+    var srtTime = "";
+    var finTime = "";
 
     setTimeout(function(){ createdTime()}, randomTall());
     
@@ -66,17 +66,15 @@
         if (blankIndexes.length === 0) return;
         let random = Math.floor(Math.random() * blankIndexes.length);
         board[random] = 'X';
-        var srtTime = new Date();
-        var startTime = srtTime.getMilliseconds();
+        srtTime = Date.now();
         updateView();
 
     }
     function getTime(index) {
             if (board[index] == 'X'){
             let html = "";
-            finTime = new Date();
-            var finishedTime = finTime.getMilliseconds();
-            var spentMilliseconds = Math.floor(finishedTime - startTime);
+            finTime = Date.now();
+            var spentMilliseconds = Math.floor(finTime- srtTime);
             var spentSeconds = spentMilliseconds / 1000;
             html = `${spentSeconds}`;
             infoen.innerHTML = html;
