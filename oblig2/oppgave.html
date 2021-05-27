@@ -27,7 +27,7 @@
         let inputValue; // Variabel for hva som er skrevet i input-feltet
         var yesno = "disabled";
         var yesno2 = "disabled";
-        var selectedElement;
+        var kanskje
 
 
         show();
@@ -66,10 +66,15 @@
             var colString = "hsl(" + ((curPercent * (maxHue - minHue)) + minHue) + ",100%,50%)";
             return colString;
         }
-
+        var idIndex;
+        var selectedElement;
         function selectStolpe(index) {
-            let valgtString = toString(index)
-            document.getElementById("1").classList.add("valgt")
+            idIndex = index.id;
+            var div = document.getElementById(idIndex);
+            selectedElement = div;
+            selectedElement.classList.remove("valgt");
+            index = selectedElement;
+            selectedElement.classList.add("valgt");
             selectedElement = index.id;
             yesno = "enabled";
             yesno2 = "enabled";
