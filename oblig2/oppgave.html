@@ -9,7 +9,8 @@
 </head>
 <style>
     .valgt {
-        border: 2px solid black
+        stroke: black;
+        stroke-width: 1px;
     }
 </style>
 
@@ -26,8 +27,28 @@
         let inputValue; // Variabel for hva som er skrevet i input-feltet
         var yesno = "disabled";
         var yesno2 = "disabled";
-        var div1 = document.getElementById("1");
-        var selectedElement = div1;
+        var selectedElement;
+
+
+        show();
+        function show() {
+            let svgInnerHtml = '';
+            for (let i = 0; i < numbers.length; i++) {
+                svgInnerHtml += createBar(numbers[i], i + 1);
+            }
+            contentDiv.innerHTML = `
+            <svg id="chart" width="500" viewBox="0 0 80 60">
+                ${svgInnerHtml}
+            </svg><br/>
+            Valgt stolpe: <i>${selectedElement || "Ingen"}</i>
+            <br />
+            Verdi:
+            <input type="number" min="1" max="10" oninput="inputValue = this.value" />
+            <button onclick="addStolpe()">Legg til stolpe</button>
+            <button onclick="editStolpen()" ${yesno2}>Endre valgt stolpe</button><br />
+            <button id="buttonFjern" onclick="fjernStolpen()" ${yesno}>Fjerne valgt stolpe</button>
+            `;
+        }
 
         function createBar(number, barNo) {
             const width = 8;
@@ -46,14 +67,13 @@
             return colString;
         }
 
-
-
         function selectStolpe(index) {
-            index.classList.remove("valgt");
+            let valgtString = toString(index)
+            document.getElementById("1").classList.add("valgt")
             selectedElement = index.id;
-            index.classList.add("valgt");
             yesno = "enabled";
             yesno2 = "enabled";
+            console.log(selectedElement);
             show();
         }
         function fjernStolpen(index) {
@@ -85,25 +105,6 @@
         }
 
 
-        show();
-        function show() {
-            let svgInnerHtml = '';
-            for (let i = 0; i < numbers.length; i++) {
-                svgInnerHtml += createBar(numbers[i], i + 1);
-            }
-            contentDiv.innerHTML = `
-            <svg id="chart" width="500" viewBox="0 0 80 60">
-                ${svgInnerHtml}
-            </svg><br/>
-            Valgt stolpe: <i>${selectedElement || "Ingen"}</i>
-            <br />
-            Verdi:
-            <input type="number" min="1" max="10" oninput="inputValue = this.value" />
-            <button onclick="addStolpe()">Legg til stolpe</button>
-            <button onclick="editStolpen()" ${yesno2}>Endre valgt stolpe</button><br />
-            <button id="buttonFjern" onclick="fjernStolpen()" ${yesno}>Fjerne valgt stolpe</button>
-            `;
-        }
     </script>
 </body>
 
