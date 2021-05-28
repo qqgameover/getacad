@@ -8,105 +8,12 @@
     <title></title>
 </head>
 <style>
-    .valgt {
-        stroke: black;
-        stroke-width: 1px;
-    }
 </style>
 
 <body>
-    <div id="content">
-    </div>
-
-    <script>
-        // hjelpevariable for både view og controller
-        var contentDiv = document.getElementById('content');
-        // model
-        let numbers = [4, 3, 1, 5, 8];
-        let inputValue; // Variabel for hva som er skrevet i input-feltet
-        var yesno = "disabled";
-        var yesno2 = "disabled";
-        var kanskje
-
-
-        show();
-        function show() {
-            let svgInnerHtml = '';
-            for (let i = 0; i < numbers.length; i++) {
-                svgInnerHtml += createBar(numbers[i], i + 1);
-            }
-            contentDiv.innerHTML = `
-            <svg id="chart" width="500" viewBox="0 0 80 60">
-                ${svgInnerHtml}
-            </svg><br/>
-            Valgt stolpe: <i>${selectedElement || "Ingen"}</i>
-            <br />
-            Verdi:
-            <input type="number" min="1" max="10" oninput="inputValue = this.value" />
-            <button onclick="addStolpe()">Legg til stolpe</button>
-            <button onclick="editStolpen()" ${yesno2}>Endre valgt stolpe</button><br />
-            <button id="buttonFjern" onclick="fjernStolpen()" ${yesno}>Fjerne valgt stolpe</button>
-            `;
-        }
-
-        function createBar(number, barNo) {
-            const width = 8;
-            const spacing = 2;
-            let x = (barNo - 1) * (width + spacing);
-            let height = number * 10;
-            let y = 60 - height;
-            let color = calcColor(1, 10, barNo);
-            let stroke = selectedElement == barNo ? "black" : "";
-            return `<rect width="${width}" id="${barNo}" height="${height}"x="${x}" y="${y}" fill="${color}" stroke="${stroke}" onclick="selectStolpe(this)"></rect>`;
-        }
-
-        function calcColor(min, max, val) {
-            var minHue = 240, maxHue = 0;
-            var curPercent = (val - min) / (max - min);
-            var colString = "hsl(" + ((curPercent * (maxHue - minHue)) + minHue) + ",100%,50%)";
-            return colString;
-        }
-
-        var idIndex;
-        var selectedElement;
-        function selectStolpe(index) {
-            selectedElement = index.id;
-            yesno = "enabled";
-            yesno2 = "enabled";
-            show();
-        }
-
-        function fjernStolpen(index) {
-            delete numbers[(selectedElement - 1)];
-            yesno = "disabled";
-            yesno2 = "disabled";
-            selectedElement = "ingen";
-            numbers = numbers.filter(function () {
-                return true;
-            });
-            show();
-        }
-
-        function editStolpen() {
-            if (!(10 < inputValue || inputValue == undefined)) {
-                numbers[selectedElement - 1] = inputValue;
-                show();
-            } else {
-                alert("Feltet er tomt eller du har valgt et tall over 10!")
-            }
-        }
-
-        function addStolpe() {
-            if (!(10 < inputValue || inputValue == undefined)) {
-                numbers.push(inputValue);
-                show();
-            } else {
-                alert("Feltet er tomt eller du har valgt et tall over 10!")
-            }
-        }
-
-
-    </script>
+    <div id="content"></div>
+    <script src="oppgavefunk.js"></script>
+    <script src="oppgavebare.js"></script>
 </body>
 
 </html>
