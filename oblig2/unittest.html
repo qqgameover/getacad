@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUnit loginIn</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css" />
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+    <script src="oppgavebare.js"></script>
+    <script>
+        var inputValue = "5";
+        var selectedElement = "3";
+        function show() { }
+
+        QUnit.test("velguten", function (assert) {
+            const actual = selectStolpe("ingen");
+            const expected = "Selected ingen";
+            assert.equal(actual, expected);
+        });
+        QUnit.test("velg", function (assert) {
+            const actual = selectStolpe("5");
+            const expected = "Selected 5";
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("Fjern", function (assert) {
+            const actual = fjernStolpen("5");
+            const expected = "removed 5";
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("endre", function (assert) {
+            const actual = editStolpen("3s"); //HVORFOR FUNKER DET????????????????????????????????????????????
+            const expected = "edited 3";
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test("add", function (assert) {
+            const actual = addStolpe();
+            const expected = "added";
+            assert.equal(actual, expected);
+        });
+    </script>
+</body>
+
+</html>
