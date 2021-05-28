@@ -23,7 +23,6 @@
         var contentDiv = document.getElementById('content');
         // model
         let numbers = [4, 3, 1, 5, 8];
-        console.log(numbers);
         let inputValue; // Variabel for hva som er skrevet i input-feltet
         var yesno = "disabled";
         var yesno2 = "disabled";
@@ -101,7 +100,6 @@
         function addStolpe() {
             if (!(10 < inputValue || inputValue == undefined)) {
                 numbers.push(inputValue);
-                console.log(inputValue)
                 show();
             } else {
                 alert("Feltet er tomt eller du har valgt et tall over 10!")
