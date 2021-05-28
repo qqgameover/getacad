@@ -21,7 +21,7 @@ function fjernStolpen(index) {
     return `removed ${index}`;
 }
 
-function editStolpen() {
+function editStolpen(selectedElement) {
     if (!(10 < inputValue || inputValue == undefined)) {
         numbers[selectedElement - 1] = inputValue;
         show();
