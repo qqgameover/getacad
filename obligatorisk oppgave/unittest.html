@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>QUnit loginIn</title>
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/qunit/qunit-2.9.2.css"
-    />
-  </head>
-  <body>
-    <div id="qunit"></div>
-    <div id="qunit-fixture"></div>
-    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
-    <script src="bareloggedin.js"></script>
-    <script>
-      QUnit.test("Riktig", function (assert) {
-        const actual = loggIn("KasperL", "GetErFlott!");
-        const expected = "loggedin";
-        assert.equal(actual, expected);
-      });
 
-      QUnit.test("Noe mangler", function (assert) {
-        const actual = loggIn("", "GetErFlott!");
-        const expected = "mangler noe";
-        assert.equal(actual, expected);
-      });
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>QUnit loginIn</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css" />
+</head>
 
-      QUnit.test("Feil", function (assert) {
-        const actual = loggIn("KasperxD", "GetErFlott!");
-        const expected = "Feil";
-        assert.equal(actual, expected);
-      });
-    </script>
-  </body>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+  <script src="bareloggedin.js"></script>
+  <script>
+    function updateView() {
+
+    }
+    function loginupdate() {
+
+    }
+    QUnit.test("Riktig", function (assert) {
+      const actual = loggIn("KasperL", "GetErFlott!");
+      const expected = "loggedin";
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test("Noe mangler", function (assert) {
+      const actual = loggIn("", "GetErFlott!");
+      const expected = "mangler noe";
+      assert.equal(actual, expected);
+    });
+
+    QUnit.test("Feil", function (assert) {
+      const actual = loggIn("KasperxD", "GetErFlott!");
+      const expected = "Feil";
+      assert.equal(actual, expected);
+    });
+  </script>
+</body>
+
 </html>
