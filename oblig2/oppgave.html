@@ -57,7 +57,8 @@
             let height = number * 10;
             let y = 60 - height;
             let color = calcColor(1, 10, barNo);
-            return `<rect width="${width}" id="${barNo}" height="${height}"x="${x}" y="${y}" fill="${color}" onclick="selectStolpe(this)"></rect>`;
+            let stroke = selectedElement == barNo ? "black" : "";
+            return `<rect width="${width}" id="${barNo}" height="${height}"x="${x}" y="${y}" fill="${color}" stroke="${stroke}" onclick="selectStolpe(this)"></rect>`;
         }
 
         function calcColor(min, max, val) {
@@ -66,21 +67,16 @@
             var colString = "hsl(" + ((curPercent * (maxHue - minHue)) + minHue) + ",100%,50%)";
             return colString;
         }
+
         var idIndex;
         var selectedElement;
         function selectStolpe(index) {
-            idIndex = index.id;
-            var div = document.getElementById(idIndex);
-            selectedElement = div;
-            selectedElement.classList.remove("valgt");
-            index = selectedElement;
-            selectedElement.classList.add("valgt");
             selectedElement = index.id;
             yesno = "enabled";
             yesno2 = "enabled";
-            console.log(selectedElement);
             show();
         }
+
         function fjernStolpen(index) {
             delete numbers[(selectedElement - 1)];
             yesno = "disabled";
@@ -91,6 +87,8 @@
             });
             show();
         }
+
+
         function editStolpen() {
             if (!(10 < inputValue || inputValue == undefined)) {
                 numbers[selectedElement - 1] = inputValue;
@@ -99,6 +97,7 @@
                 alert("Feltet er tomt eller du har valgt et tall over 10!")
             }
         }
+
         function addStolpe() {
             if (!(10 < inputValue || inputValue == undefined)) {
                 numbers.push(inputValue);
