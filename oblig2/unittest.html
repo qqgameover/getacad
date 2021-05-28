@@ -15,7 +15,6 @@
     <script src="oppgavebare.js"></script>
     <script>
         var inputValue = "5";
-        var selectedElement = "3";
         function show() { }
 
         QUnit.test("velguten", function (assert) {
@@ -36,7 +35,7 @@
         });
 
         QUnit.test("endre", function (assert) {
-            const actual = editStolpen("3"); //HVORFOR FUNKER DET????????????????????????????????????????????
+            const actual = editStolpen("3");
             const expected = "edited 3";
             assert.equal(actual, expected);
         });
