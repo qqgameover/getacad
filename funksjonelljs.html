@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            background-color: rgb(49, 46, 43);
+            padding: 10px;
+            font-size: 300%;
+        }
+
+        div.board {
+            display: grid;
+            grid-template-columns: repeat(8, 60px);
+            grid-template-rows: repeat(8, 60px);
+        }
+
+        div.black {
+            background-color: rgb(118, 150, 86);
+        }
+
+        div.white {
+            background-color: rgb(238, 238, 210);
+        }
+
+        span.whitePiece {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="board" class="board">
+    </div>
+
+    <script>
+        var boardDiv = document.getElementById('board');
+        var boardModel = createBoard();
+        boardModel[23].piece = { type: 'king', isWhite: true };
+        boardModel[24].piece = { type: 'queen', isWhite: true };
+        boardModel[1].piece = { type: 'king', isWhite: false };
+        show();
+        console.log(boardModel.filter(square => square.piece));
+
+
+        function createBoard() {
+            return createArray(8)
+                .map(createRow)
+                .reduce((board, row) => board.concat(row), []);
+        }
+
+        function createRow(i) {
+            var isFirstSquareWhite = i % 2 == 0;
+            var x = isFirstSquareWhite ? 1 : 0;
+            return createArray(8)
+                .map(i => ({ isBlack: i % 2 === x }));
+        }
+
+        function createArray(n) {
+            return Array.from(new Array(n).keys());
+        }
+
+
+        function show() {
+            boardDiv.innerHTML = boardModel
+                .map(htmlFromSquareModel)
+                .reduce((allHtml, squareHtml) => allHtml + squareHtml, '');
+        }
+
+        function htmlFromSquareModel(squareModel) {
+            var content = getColoredPieceCharacter(squareModel.piece);
+            return `<div class="${squareModel.isBlack ? 'black' : 'white'}">${content}</div>`;
+        }
+
+        function getColoredPieceCharacter(pieceModel) {
+            if (!pieceModel) return '';
+            var pieceCharacter = getPieceCharacter(pieceModel.type);
+            return pieceModel.isWhite ? `<span class="whitePiece">${pieceCharacter}</span>` : pieceCharacter;
+        }
+
+        function getPieceCharacter(type) {
+            if (type === 'king') return '♚';
+            if (type === 'queen') return '♛';
+            if (type === 'rook') return '♜';
+            if (type === 'bishop') return '♝';
+            if (type === 'knight') return '♞';
+            if (type === 'pawn') return '♟';
+            return '';
+        }
+
+    </script>
+</body>
+
+</html>
