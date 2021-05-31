@@ -1,8 +1,5 @@
-
-// hjelpevariable for både view og controller
 var contentDiv = document.getElementById('content');
-// model
-let inputValue; // Variabel for hva som er skrevet i input-feltet
+let inputValue;
 var yesno = "disabled";
 var yesno2 = "disabled";
 var kanskje;
