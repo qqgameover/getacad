@@ -32,7 +32,7 @@ function loggIn(username, passord) {
   }
 }
 
-function tilfeldigBokstavNORSK() {
+tilfeldigBokstavNORSK = () => {
   var bokstav = tilfeldigTall(0, 28);
   if (bokstav === 28) return "å";
   if (bokstav === 27) return "ø";
@@ -43,7 +43,7 @@ function tilfeldigBokstavNORSK() {
   }
 }
 
-function tilfeldigOrd() {
+tilfeldigOrd = () => {
   let bokstav1 = tilfeldigBokstavNORSK();
   let bokstav2 = tilfeldigBokstavNORSK();
   let bokstav3 = tilfeldigBokstavNORSK();
