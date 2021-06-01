@@ -71,15 +71,17 @@
                             <th>Gjort Dato</th>
                             <th>Frist</th>
                             <th>Gjort</th>
+                            <th>Fjern</th>
                         </tr>`;
                 collectionSnapshot.forEach(
                     function (toDoItemsSnapshot) {
                         let toDoItems = toDoItemsSnapshot.data();
-                        const checkedHTML = toDoItems.isDone ? checked = "checked" : "";
+                        const checkedHTML = toDoItems.done == true ? 'checked="checked"' : "";
                         html += "<tr>" + "<td>" + toDoItems.toDoText + "</td>" + "</td>" + "<td>"
                             + toDoItems.toDoNavn + "</td>" + "<td>"
                             + toDoItems.gjortDato + "</td>" + "<td>" + toDoItems.frist + "</td>" + "<td>"
-                            + `<input type="checkbox" checked="${checkedHTML}" onchange="changeIsDone(this)"/>` + "</tr >"
+                            + `<input type="checkbox" ${checkedHTML} onchange="changeIsDone(this)"/>` + "<td>"
+                            + '<button onclick="fjerntask(this)"/>Fjern' + "</td>" + "</tr >"
                     });
                 document.getElementById("todo").innerHTML = html;
             });
@@ -88,13 +90,18 @@
             var task = {
                 toDoText: taskDescriptionInput.value,
                 toDoNavn: taskPerson.value,
-                gjortDato: "",
+                done: false,
                 frist: taskDateInput.value
             };
             todoCollection.add(task);
         }
         function getdoc(id) {
             return document.getElementById(id);
+        }
+        function changeIsDone(checkbox) {
+            let chkbox = checkbox;
+            chkbox.done = true;
+            chkbox.gjortDato = new Date();
         }
     </script>
 </body>
