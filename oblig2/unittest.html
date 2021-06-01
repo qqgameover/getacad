@@ -15,6 +15,7 @@
     <script src="oppgavebare.js"></script>
     <script>
         var inputValue = "5";
+        var numbers = [1, 2, 3, 4, 5];
         function show() { }
 
         QUnit.test("ingen", function (assert) {
@@ -29,9 +30,11 @@
         });
 
         QUnit.test("Fjern", function (assert) {
-            const actual = fjernStolpen("5");
-            const expected = "removed 5";
-            assert.equal(actual, expected);
+            selectedElement = "5";
+            fjernStolpen("5")
+            const actual = numbers;
+            const expected = [1, 2, 3, 4];
+            assert.deepEqual(actual, expected);
         });
 
         QUnit.test("endre", function (assert) {
