@@ -2,14 +2,18 @@ var numbers = [4, 3, 1, 5, 8];
 var selectedElement;
 
 function selectStolpe(index) {
-    if (selectedElement != index) {
+    if (selectedElement != index.id) {
         selectedElement = index.id;
         yesno = "enabled";
         yesno2 = "enabled";
         show();
-        return `Selected${index}`
-    } else if (toString(index) == selectedElement) {
-        alert("hei")
+        return `Selected ${index}`
+    } else {
+        selectedElement = "ingen";
+        yesno = "disabled";
+        yesno2 = "disabled";
+        show();
+        return `Deselected ${index}`;
     }
 }
 
