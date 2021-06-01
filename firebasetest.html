@@ -74,6 +74,7 @@
                             <th>Fjern</th>
                         </tr>`;
                 collectionSnapshot.forEach(
+
                     function (toDoItemsSnapshot) {
                         let toDoItems = toDoItemsSnapshot.data();
                         const checkedHTML = toDoItems.done == true ? 'checked="checked"' : "";
@@ -81,7 +82,7 @@
                             + toDoItems.toDoNavn + "</td>" + "<td>"
                             + toDoItems.gjortDato + "</td>" + "<td>" + toDoItems.frist + "</td>" + "<td>"
                             + `<input type="checkbox" ${checkedHTML} onchange="changeIsDone(this)"/>` + "<td>"
-                            + '<button onclick="fjerntask(this)"/>Fjern' + "</td>" + "</tr >"
+                            + '<button onclick="fjernTask(this)"/>Fjern' + "</td>" + "</tr >"
                     });
                 document.getElementById("todo").innerHTML = html;
             });
@@ -91,7 +92,7 @@
                 toDoText: taskDescriptionInput.value,
                 toDoNavn: taskPerson.value,
                 done: false,
-                frist: taskDateInput.value
+                frist: taskDateInput.value,
             };
             todoCollection.add(task);
         }
@@ -103,6 +104,10 @@
             chkbox.done = true;
             chkbox.gjortDato = new Date();
         }
+        function fjernTask(denne) {
+            db.collection(todoCollection).denne.delete;
+        }
+
     </script>
 </body>
 
