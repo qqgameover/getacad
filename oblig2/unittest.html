@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>QUnit loginIn</title>
+    <title>QUnit stolpehelvete</title>
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.9.2.css" />
 </head>
 
@@ -17,9 +17,9 @@
         var inputValue = "5";
         function show() { }
 
-        QUnit.test("velguten", function (assert) {
+        QUnit.test("ingen", function (assert) {
             const actual = selectStolpe("ingen");
-            const expected = "Selected ingen";
+            const expected = "Deselected ingen";
             assert.equal(actual, expected);
         });
         QUnit.test("velg", function (assert) {
@@ -35,6 +35,8 @@
         });
 
         QUnit.test("endre", function (assert) {
+            inputValue = "3";
+            selectedElement = "3";
             const actual = editStolpen("3");
             const expected = "edited 3";
             assert.equal(actual, expected);
