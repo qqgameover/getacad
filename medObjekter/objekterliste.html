@@ -41,7 +41,7 @@
     <script>
         // Model
         var tasks = [
-            { description: 'Handle til middag', name: "Kristian", frist: "2021-05-31", isDone: true },
+            { description: 'Handle til middag', name: "Kristian", frist: "2021-05-31", isDone: true, gjortDato: "2021-05-31" },
             { description: 'Lage middag', name: "Ola", frist: "2021-05-31", isDone: false },
             { description: 'Bursdagen min!', name: "Kasper", frist: "2021-06-10", isDone: false },
         ];
@@ -114,7 +114,7 @@
 
         function changeIsDone(checkbox, index) {
             tasks[index].isDone = checkbox.checked;
-            tasks[index].gjortDato = new Date("2021-05-31").toLocaleDateString();
+            tasks[index].gjortDato = new Date().toLocaleDateString();
             show();
         }
 
