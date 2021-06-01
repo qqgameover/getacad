@@ -2,26 +2,101 @@
 <html lang="en">
 
 <head>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/8.6.3/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/8.6.3/firebase-analytics.js"></script>
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 </head>
+<style>
+    table,
+    tr,
+    td,
+    th {
+        border: 1px solid lightgray;
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        padding: 4px;
+    }
+
+    th {
+        background-color: darkblue;
+        border: 1px solid darkblue;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: antiquewhite;
+    }
+</style>
 
 <body>
-    <div>hei</div>
+    <input id="taskDescription" type="text" />
+    <input id="taskPerson" placeholder="Hvem skal gjøre det?" type="text" />
+    <input id="taskDate" type="date" />
+    <button onclick="addTask()">Legg til oppgave</button>
+    <table id="todo"></table>
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+    <script>
+        var taskDescriptionInput = getdoc('taskDescription');
+        var taskPerson = getdoc("taskPerson");
+        var taskDateInput = getdoc("taskDate")
+        var firebaseConfig = {
+            apiKey: "AIzaSyCMvkyLgdduat6zfiUXhXEA_TOlyeJPcV8",
+            authDomain: "start-c2050.firebaseapp.com",
+            databaseURL: "https://start-c2050-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "start-c2050",
+            storageBucket: "start-c2050.appspot.com",
+            messagingSenderId: "976525633228",
+            appId: "1:976525633228:web:4dcb87ac498b0376460469",
+            measurementId: "G-H87HMVJ85N"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        var todoCollection = db.collection("toDoItems")
+        todoCollection.onSnapshot(
+            function (collectionSnapshot) {
+                let html = `
+                        <tr>
+                            <th>Oppgave</th>
+                            <th>Hvem</th>
+                            <th>Gjort Dato</th>
+                            <th>Frist</th>
+                            <th>Gjort</th>
+                        </tr>`;
+                collectionSnapshot.forEach(
+                    function (toDoItemsSnapshot) {
+                        let toDoItems = toDoItemsSnapshot.data();
+                        const checkedHTML = toDoItems.isDone ? checked = "checked" : "";
+                        html += "<tr>" + "<td>" + toDoItems.toDoText + "</td>" + "</td>" + "<td>"
+                            + toDoItems.toDoNavn + "</td>" + "<td>"
+                            + toDoItems.gjortDato + "</td>" + "<td>" + toDoItems.frist + "</td>" + "<td>"
+                            + `<input type="checkbox" checked="${checkedHTML}" onchange="changeIsDone(this)"/>` + "</tr >"
+                    });
+                document.getElementById("todo").innerHTML = html;
+            });
+
+        function addTask() {
+            var task = {
+                toDoText: taskDescriptionInput.value,
+                toDoNavn: taskPerson.value,
+                gjortDato: "",
+                frist: taskDateInput.value
+            };
+            todoCollection.add(task);
+        }
+        function getdoc(id) {
+            return document.getElementById(id);
+        }
+    </script>
 </body>
-<script>
-    console.log(firebase.analytics)
-</script>
 
 </html>
