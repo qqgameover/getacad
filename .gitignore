@@ -1,1 +1,15 @@
 node_modules
+facedetect/face-api.min.js
+facedetect/facedetect.js
+facedetect/facedetection.html
+facedetect/models/face_expression_model-shard1
+facedetect/models/face_expression_model-weights_manifest.json
+facedetect/models/face_landmark_68_model-shard1
+facedetect/models/face_landmark_68_model-weights_manifest.json
+facedetect/models/face_landmark_68_tiny_model-shard1
+facedetect/models/face_landmark_68_tiny_model-weights_manifest.json
+facedetect/models/face_recognition_model-shard1
+facedetect/models/face_recognition_model-shard2
+facedetect/models/face_recognition_model-weights_manifest.json
+facedetect/models/tiny_face_detector_model-shard1
+facedetect/models/tiny_face_detector_model-weights_manifest.json
