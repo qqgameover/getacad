@@ -4,7 +4,7 @@ let appen = document.getElementById("app");
 let a = 5;
 let b = 3;
 let hmtl = "";
-
+let status = "";
 let blackJack = {
     blackJacked: 21,
     playerValue: 0,
@@ -49,9 +49,12 @@ function blackJackWin() {
 }
 function stand() {
     hitRobot();
-    if (blackJack.aiValue >= 18 && blackJack.playerValue > blackJack.aiValue && blackJack.blackJackBust == false) {
-        return "Gratulerer du har vunnet!"
-    } else if (blackJack.aiValue < 18) {
+    if (blackJack.aiValue >= 18 && blackJack.playerValue < blackJack.aiValue && blackJack.aiValue <= 21) {
+        status = "Du har tapt :(";
+    } else if (blackJack.aiValue >= 18 && blackJack.aiValue <= 21 && blackJack.playerValue > blackJack.aiValue) {
+        status = "Gratulerer du har vunnet";
+    }
+    else if (blackJack.aiValue < 18) {
         hitRobot();
         stand();
     }
@@ -69,6 +72,8 @@ function spillet() {
     Robotten har ${blackJack.aiValue}
     ${blackJackAiBusten() || ""}
     ${blackJackAiWin() || ""}
+    <br/>
+    ${status || ""}
     `;
     appen.innerHTML = html;
 }
