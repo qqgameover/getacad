@@ -49,6 +49,10 @@ function blackJackWin() {
 }
 function stand() {
     hitRobot();
+    if (blackJack.aiValue == blackJack.playerValue) {
+        status = "Det ble uavgjort!"
+        return;
+    }
     if (blackJack.aiValue >= 18 && blackJack.playerValue < blackJack.aiValue && blackJack.aiValue <= 21) {
         status = "Du har tapt :(";
     } else if (blackJack.aiValue >= 18 && blackJack.aiValue <= 21 && blackJack.playerValue > blackJack.aiValue) {
@@ -144,13 +148,13 @@ function hitRobot() {
 function blackJackAiBusten() {
     if (blackJack.aiValue >= 22) {
         blackJack.blackjackAiBust = true;
-        return "Roboten busta, du vant!";
+        return "Robotten busta, du vant!";
     } else blackJack.blackjackBust = false;
 }
 
 function blackJackAiWin() {
     if (blackJack.currentAiCards[0] == [10] && blackJack.currentAiCards[1] == [11] || blackJack.currentAiCards[0] == [11] && blackJack.currentAiCards[1] == [10]) {
         blackJack.blackJackAibj = true;
-        return "desverre fikk blackjack roboten blackjack!"
+        return "desverre fikk robotten blackjack!"
     } else blackJack.blackJackAibj = false;
 }
