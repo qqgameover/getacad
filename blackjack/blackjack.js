@@ -7,7 +7,6 @@ let hmtl = "";
 let status = "";
 let restarted = ""
 let blackJack = {
-    blackJacked: 21,
     playerValue: 0,
     blackJackBust: false,
     blackJackbj: false,
@@ -162,9 +161,6 @@ function blackJackAiBusten() {
 }
 
 function restart() {
-    blackJack = {};
-
-    blackJack.blackJacked = 21;
     blackJack.playerValue = 0;
     blackJack.blackJackBust = false;
     blackJack.blackJackbj = false;
