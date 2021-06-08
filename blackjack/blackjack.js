@@ -5,6 +5,7 @@ let a = 5;
 let b = 3;
 let hmtl = "";
 let status = "";
+let restarted = ""
 let blackJack = {
     blackJacked: 21,
     playerValue: 0,
@@ -25,7 +26,8 @@ let blackJack = {
     currentCards: [],
     currentAiCards: [],
     aiValue: 0,
-    players: 1
+    players: 1,
+    winner: 0
 };
 
 updateView();
@@ -49,27 +51,30 @@ function blackJackWin() {
 }
 function stand() {
     hitRobot();
-    if (blackJack.aiValue == blackJack.playerValue) {
-        status = "Det ble uavgjort!"
-        return;
-    }
     if (blackJack.aiValue >= 18 && blackJack.playerValue < blackJack.aiValue && blackJack.aiValue <= 21) {
         status = "Du har tapt :(";
+        blackJack.winner = 3;
     } else if (blackJack.aiValue >= 18 && blackJack.aiValue <= 21 && blackJack.playerValue > blackJack.aiValue) {
+        blackJack.winner = 2;
         status = "Gratulerer du har vunnet";
+    } if (blackJack.aiValue == blackJack.playerValue) {
+        status = "Det ble uavgjort!"
+        blackJack.winner = 1;
+        return;
     }
     else if (blackJack.aiValue < 18) {
         hitRobot();
         stand();
     }
+    restartKnapp();
     spillet();
 }
 
 function spillet() {
     html = `
     du har ${blackJack.playerValue}
-    <button onclick="hitPlayer()"/>hit
-    <button onclick="stand()">stå</button>
+    <button id="hit" onclick="hitPlayer()"/>hit
+    <button id="stand" onclick="stand()">stå</button>
     ${checkIfBust() || ""}
     ${blackJackWin() || ""}
     <br/>
@@ -78,12 +83,15 @@ function spillet() {
     ${blackJackAiWin() || ""}
     <br/>
     ${status || ""}
+    ${restarted || ""}
     `;
     appen.innerHTML = html;
 }
 
 function checkIfBust() {
     if (blackJack.blackjackBust == true) {
+        blackJack.winner = 3;
+        restartKnapp();
         return "Du har tapt";
     } else return;
 }
@@ -148,8 +156,40 @@ function hitRobot() {
 function blackJackAiBusten() {
     if (blackJack.aiValue >= 22) {
         blackJack.blackjackAiBust = true;
+        blackJack.winner = 2;
         return "Robotten busta, du vant!";
     } else blackJack.blackjackBust = false;
+}
+
+function restart() {
+    blackJack = {};
+
+    blackJack.blackJacked = 21;
+    blackJack.playerValue = 0;
+    blackJack.blackJackBust = false;
+    blackJack.blackJackbj = false;
+    blackJack.blackJackAiBust = false;
+    blackJack.blackJackAce = 0;
+    blackJack.blackJack10 = 0;
+    blackJack.blackJack9 = 0;
+    blackJack.blackJack8 = 0;
+    blackJack.blackJack7 = 0;
+    blackJack.blackJack6 = 0;
+    blackJack.blackJack5 = 0;
+    blackJack.blackJack4 = 0;
+    blackJack.blackJack3 = 0;
+    blackJack.blackJack2 = 0;
+    blackJack.blackJack1 = 0;
+    blackJack.currentCards = [];
+    blackJack.currentAiCards = [];
+    blackJack.aiValue = 0;
+    blackJack.players = 1;
+    blackJack.winner = 0;
+    hmtl = "";
+    status = "";
+    restarted = ""
+    startSpillet();
+    spillet();
 }
 
 function blackJackAiWin() {
@@ -157,4 +197,11 @@ function blackJackAiWin() {
         blackJack.blackJackAibj = true;
         return "desverre fikk robotten blackjack!"
     } else blackJack.blackJackAibj = false;
+}
+function restartKnapp() {
+    if (blackJack.winner >= 1) {
+        restarted = `
+        <button onclick="restart()">Start på nytt?</button>
+        `
+    } else return;
 }
