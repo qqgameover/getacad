@@ -102,17 +102,6 @@ function restart() {
     blackJack.blackJackBust = false;
     blackJack.blackJackbj = false;
     blackJack.blackJackAiBust = false;
-    blackJack.blackJackAce = 0;
-    blackJack.blackJack10 = 0;
-    blackJack.blackJack9 = 0;
-    blackJack.blackJack8 = 0;
-    blackJack.blackJack7 = 0;
-    blackJack.blackJack6 = 0;
-    blackJack.blackJack5 = 0;
-    blackJack.blackJack4 = 0;
-    blackJack.blackJack3 = 0;
-    blackJack.blackJack2 = 0;
-    blackJack.blackJack1 = 0;
     blackJack.currentCards = [];
     blackJack.currentAiCards = [];
     blackJack.aiValue = 0;
