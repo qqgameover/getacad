@@ -14,7 +14,8 @@ let blackJack = {
     aiValue: 0,
     players: 1,
     winner: 0,
-    kortahtml: ""
+    kortahtml: "",
+    aiKorta: ""
 };
 
 updateView();
@@ -33,6 +34,11 @@ function korta() {
     spillet();
 }
 
+function aiKorta() {
+    blackJack.aiKorta = ""
+    for (let i = 0; i < blackJack.currentAiCards.length; i++)
+        blackJack.aiKorta += blackJack.currentAiCards[i] + " ";
+}
 function spillet() {
     html = `
     du har ${blackJack.playerValue}
@@ -61,10 +67,10 @@ function hitRobot() {
     let aiKort = Math.ceil(Math.random() * 11);
     if (aiKort == 1) {
         hitRobot();
-    }
-    if (aiKort == 11 && (blackJack.aiValue + aiKort) >= 21) {
+        return
+    } if (aiKort == 11 && (blackJack.aiValue + aiKort) <= 21) {
         aiKort = 11;
-    } else {
+    } if (aiKort == 11 && blackJack.aiValue + aiKort >= 21) {
         aiKort = 1;
     }
     blackJack.currentAiCards.push(aiKort);
@@ -124,19 +130,17 @@ function restartKnapp() {
     } else return;
 }
 function stand() {
-    hitRobot();
     if (blackJack.aiValue >= 17 && blackJack.playerValue < blackJack.aiValue && blackJack.aiValue <= 21) {
         status = "Du har tapt :(";
         blackJack.winner = 3;
     } else if (blackJack.aiValue >= 17 && blackJack.aiValue <= 21 && blackJack.playerValue > blackJack.aiValue) {
         blackJack.winner = 2;
         status = "Gratulerer du har vunnet";
-    } if (blackJack.aiValue === blackJack.playerValue && blackJack.playerValue >= 21 && blackJack.aiValue >= 21) {
+    } else if (blackJack.aiValue === blackJack.playerValue && blackJack.playerValue >= 21 && blackJack.aiValue >= 21) {
         status = "Det ble uavgjort!"
         blackJack.winner = 1;
         return;
-    }
-    else if (blackJack.aiValue < 17) {
+    } else if (blackJack.aiValue <= 17) {
         hitRobot();
         stand();
     }
@@ -160,7 +164,7 @@ function blackJackWin() {
 }
 
 function checkIfBust() {
-    if (blackJack.blackjackBust == true) {
+    if (blackJack.playerValue >= 22) {
         blackJack.winner = 3;
         restartKnapp();
         return "Du har tapt";
@@ -171,6 +175,7 @@ function hitPlayer() {
     let kort = Math.ceil(Math.random() * 11)
     if (kort == 1) {
         hitPlayer();
+        return;
     }
     if (kort == 11 && (kort + blackJack.playerValue >= 22)) {
         kort = 1;
@@ -208,6 +213,7 @@ function hitPlayer() {
     blackJackWin();
     checkIfBust();
     korta();
+    aiKorta();
     spillet();
     if (blackJack.currentAiCards.length === 0) {
         hitRobot();
