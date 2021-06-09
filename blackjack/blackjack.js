@@ -1,5 +1,3 @@
-
-// controller
 let appen = document.getElementById("app");
 let a = 5;
 let b = 3;
@@ -11,22 +9,12 @@ let blackJack = {
     blackJackBust: false,
     blackJackbj: false,
     blackJackAiBust: false,
-    blackJackAce: 0,
-    blackJack10: 0,
-    blackJack9: 0,
-    blackJack8: 0,
-    blackJack7: 0,
-    blackJack6: 0,
-    blackJack5: 0,
-    blackJack4: 0,
-    blackJack3: 0,
-    blackJack2: 0,
-    blackJack1: 0,
     currentCards: [],
     currentAiCards: [],
     aiValue: 0,
     players: 1,
-    winner: 0
+    winner: 0,
+    kortahtml: ""
 };
 
 updateView();
@@ -37,7 +25,13 @@ function updateView() {
     appen.innerHTML = html;
 }
 
-
+function korta() {
+    blackJack.kortahtml = "";
+    for (let i = 0; i < blackJack.currentCards.length; i++) {
+        blackJack.kortahtml += blackJack.currentCards[i] + " ";
+    }
+    spillet();
+}
 
 function spillet() {
     html = `
@@ -46,6 +40,7 @@ function spillet() {
     <button id="stand" onclick="stand()">stå</button>
     ${checkIfBust() || ""}
     ${blackJackWin() || ""}
+    ${blackJack.kortahtml || ""}
     <br/>
     Robotten har ${blackJack.aiValue}
     ${blackJackAiBusten() || ""}
@@ -212,6 +207,7 @@ function hitPlayer() {
     }
     blackJackWin();
     checkIfBust();
+    korta();
     spillet();
     if (blackJack.currentAiCards.length === 0) {
         hitRobot();
