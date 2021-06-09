@@ -36,8 +36,10 @@ function korta() {
 
 function aiKorta() {
     blackJack.aiKorta = ""
-    for (let i = 0; i < blackJack.currentAiCards.length; i++)
+    for (let i = 0; i < blackJack.currentAiCards.length; i++) {
         blackJack.aiKorta += blackJack.currentAiCards[i] + " ";
+    }
+    spillet();
 }
 function spillet() {
     html = `
@@ -51,6 +53,7 @@ function spillet() {
     Robotten har ${blackJack.aiValue}
     ${blackJackAiBusten() || ""}
     ${blackJackAiWin() || ""}
+    ${blackJack.aiKorta || ""}
     <br/>
     ${status || ""}
     ${restarted || ""}
@@ -115,6 +118,7 @@ function restart() {
     blackJack.aiValue = 0;
     blackJack.players = 1;
     blackJack.winner = 0;
+    blackJack.aiKorta = "";
     hmtl = "";
     status = "";
     restarted = ""
@@ -144,6 +148,7 @@ function stand() {
         hitRobot();
         stand();
     }
+    aiKorta();
     restartKnapp();
     spillet();
 }
@@ -212,8 +217,8 @@ function hitPlayer() {
     }
     blackJackWin();
     checkIfBust();
-    korta();
     aiKorta();
+    korta();
     spillet();
     if (blackJack.currentAiCards.length === 0) {
         hitRobot();
