@@ -112,3 +112,23 @@ const totalCharsInNames = characters.reduce((a, b) => {
 	return a + b.name.length;
 }, 0)
 console.log(totalCharsInNames);
+//every
+const everyBlueEyes = characters.every((characters) => {
+	return characters.eye_color == "blue";
+});
+console.log(everyBlueEyes);
+
+const everyMassOver40 = characters.every((characters) => {
+	return characters.mass > 40;
+});
+console.log(everyMassOver40);
+
+const everyHeightUnder200 = characters.every((characters) => {
+	return characters.height < 200;
+});
+console.log(everyHeightUnder200);
+
+const everyCharMale = characters.every((characters) => {
+	characters.gender == "male";
+});
+console.log(everyCharMale);
