@@ -52,13 +52,13 @@
 </body>
 <script>
 	let appen = document.getElementById("app");
-	let newRows = [
+	let newRows = [[
 		{ isHigh: false, isWide: false, isOpen: false, isWall: true },
 		{ isHigh: false, isWide: true, isOpen: false, isWall: true },
 		{ isHigh: false, isWide: false, isOpen: false, isWall: true },
 		{ isHigh: false, isWide: true, isOpen: false, isWall: true },
 		{ isHigh: false, isWide: false, isOpen: false, isWall: true, isRow: true }
-	];
+	]];
 	let mazeModel = {
 		size: 2,
 		rows: [
@@ -99,7 +99,7 @@
 			],
 		]
 	};
-	newRow(5);
+	newRow(3);
 	initModel();
 	function initModel() {
 		var rows = mazeModel.rows;
@@ -135,8 +135,15 @@
 				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool() },
 				{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
 				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool(), isRow: true }]
-			)
+			);
 		}
+		newRows.push(
+			{ isHigh: false, isWide: false, isOpen: false, isWall: true },
+			{ isHigh: false, isWide: true, isOpen: false, isWall: false },
+			{ isHigh: false, isWide: false, isOpen: false, isWall: false },
+			{ isHigh: false, isWide: true, isOpen: false, isWall: true },
+			{ isHigh: false, isWide: false, isOpen: false, isWall: true }
+		);
 	}
 	function randomBool() {
 		let random = Math.floor(Math.random() * 2)
