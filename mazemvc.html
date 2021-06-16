@@ -51,8 +51,15 @@
 	<div id="app"></div>
 </body>
 <script>
-	var appen = document.getElementById("app");
-	var mazeModel = {
+	let appen = document.getElementById("app");
+	let newRows = [
+		{ isHigh: false, isWide: false, isOpen: false, isWall: true },
+		{ isHigh: false, isWide: true, isOpen: false, isWall: true },
+		{ isHigh: false, isWide: false, isOpen: false, isWall: true },
+		{ isHigh: false, isWide: true, isOpen: false, isWall: true },
+		{ isHigh: false, isWide: false, isOpen: false, isWall: true, isRow: true }
+	];
+	let mazeModel = {
 		size: 2,
 		rows: [
 			[
@@ -66,47 +73,51 @@
 				{ isHigh: true, isWide: false, isOpen: false, isWall: true },
 				{ isHigh: true, isWide: true },
 				{ isHigh: true, isWide: false, isOpen: false, },
-				{ isHigh: true, isWide: true },
-				{ isHigh: true, isWide: false, isOpen: false, isRow: true },
+				{ isHigh: true, isWide: true, isOpen: true },
+				{ isHigh: true, isWide: false, isOpen: false, isWall: true, isRow: true },
 			],
 			[
 				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
 				{ isHigh: false, isWide: true, isOpen: false },
-				{ isHigh: false, isWide: false, isOpen: false },
-				{ isHigh: false, isWide: true, isOpen: false },
-				{ isHigh: false, isWide: false, isOpen: false, isRow: true },
+				{ isHigh: false, isWide: false, isOpen: false, },
+				{ isHigh: false, isWide: true, isOpen: false, isWall: true },
+				{ isHigh: false, isWide: false, isOpen: false, isWall: true, isRow: true },
 			],
 			[
 				{ isHigh: true, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: true, isWide: true },
+				{ isHigh: true, isWide: true, },
 				{ isHigh: true, isWide: false, isOpen: false },
-				{ isHigh: true, isWide: true },
-				{ isHigh: true, isWide: false, isOpen: false, isRow: true },
+				{ isHigh: true, isWide: true, isWall: true },
+				{ isHigh: true, isWide: false, isOpen: false, isWall: true, isRow: true },
 			],
 			[
 				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: true, isOpen: false, isWall: true },
+				{ isHigh: false, isWide: true, isOpen: true, isWall: false },
+				{ isHigh: false, isWide: false, isOpen: false, isWall: false },
+				{ isHigh: false, isWide: true, isOpen: true, isWall: true },
 				{ isHigh: false, isWide: false, isOpen: false, isRow: true, isWall: true },
 			],
 		]
 	};
+	newRow(5);
 	initModel();
 	function initModel() {
+		var rows = mazeModel.rows;
 		let html = "<table> <tr>";
 		let newL = false;
-		for (let i = 0; i < mazeModel.rows.length; i++) {
-			for (let j = 0; j < mazeModel.rows[i].length; j++) {
-				let high = mazeModel.rows[i][j].isHigh == true ? "high" : "low";
-				let wide = mazeModel.rows[i][j].isWide == true ? "wide" : "small";
-				let open = mazeModel.rows[i][j].isOpen == true ? "open" : "";
-				let wall = mazeModel.rows[i][j].isWall == true ? "wall" : "";
-				newL = mazeModel.rows[i][j].isRow == true ? newL = true : newL = false;
+		for (let i = 0; i < newRows.length; i++) {
+			console.log(i)
+			for (let j = 0; j < newRows[i].length; j++) {
+				console.log(newRows)
+				console.log(j)
+				let high = newRows[i][j].isHigh == true ? "high" : "low";
+				let wide = newRows[i][j].isWide == true ? "wide" : "small";
+				let open = newRows[i][j].isOpen == true ? "open" : "";
+				let wall = newRows[i][j].isWall == true ? "wall" : "";
+				newL = newRows[i][j].isRow == true ? newL = true : newL = false;
 				console.log(newL);
 				if (newL) {
-					html += `<tr class="${high} ${wide} ${open} ${wall}"></tr>`
-					newL = false;
+					html += `<tr class="${high} ${wide} ${open} ${wall}">`
 				} else {
 					html += `<td class="${high} ${wide} ${open} ${wall}"></td>`
 				}
@@ -114,6 +125,27 @@
 
 		}
 		appen.innerHTML = html + "</tr> </table>";
+	}
+
+	function newRow(num) {
+		for (let f = 0; f < num; f++) {
+			newRows.push(
+				[{ isHigh: true, isWide: false, isOpen: randomBool(), isWall: randomBool() },
+				{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
+				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool() },
+				{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
+				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool(), isRow: true }]
+			)
+		}
+	}
+	function randomBool() {
+		let random = Math.floor(Math.random() * 2)
+		if (random === 0) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 
 </script>
