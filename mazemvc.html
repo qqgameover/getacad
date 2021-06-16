@@ -137,13 +137,15 @@
 				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool(), isRow: true }]
 			);
 		}
+
 		newRows.push(
-			{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-			{ isHigh: false, isWide: true, isOpen: false, isWall: false },
-			{ isHigh: false, isWide: false, isOpen: false, isWall: false },
+			[{ isHigh: false, isWide: false, isOpen: false, isWall: true },
 			{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-			{ isHigh: false, isWide: false, isOpen: false, isWall: true }
+			{ isHigh: false, isWide: false, isOpen: false, isWall: true },
+			{ isHigh: false, isWide: true, isOpen: false, isWall: true },
+			{ isHigh: false, isWide: false, isOpen: false, isWall: true }]
 		);
+
 	}
 	function randomBool() {
 		let random = Math.floor(Math.random() * 2)
