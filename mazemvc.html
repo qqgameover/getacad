@@ -52,89 +52,59 @@
 </body>
 <script>
 	let appen = document.getElementById("app");
-	let newRows = [[
-		{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-		{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-		{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-		{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-		{ isHigh: false, isWide: false, isOpen: false, isWall: true, isRow: true }
-	]];
-	let mazeModel = {
-		size: 2,
-		rows: [
-			[
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true, isRow: true }
-			],
-			[
-				{ isHigh: true, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: true, isWide: true },
-				{ isHigh: true, isWide: false, isOpen: false, },
-				{ isHigh: true, isWide: true, isOpen: true },
-				{ isHigh: true, isWide: false, isOpen: false, isWall: true, isRow: true },
-			],
-			[
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: true, isOpen: false },
-				{ isHigh: false, isWide: false, isOpen: false, },
-				{ isHigh: false, isWide: true, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true, isRow: true },
-			],
-			[
-				{ isHigh: true, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: true, isWide: true, },
-				{ isHigh: true, isWide: false, isOpen: false },
-				{ isHigh: true, isWide: true, isWall: true },
-				{ isHigh: true, isWide: false, isOpen: false, isWall: true, isRow: true },
-			],
-			[
-				{ isHigh: false, isWide: false, isOpen: false, isWall: true },
-				{ isHigh: false, isWide: true, isOpen: true, isWall: false },
-				{ isHigh: false, isWide: false, isOpen: false, isWall: false },
-				{ isHigh: false, isWide: true, isOpen: true, isWall: true },
-				{ isHigh: false, isWide: false, isOpen: false, isRow: true, isWall: true },
-			],
-		]
-	};
-	newRow(3);
+	let side = [];
+	let newRows = [[]];
+
+	newRow(5);
 	initModel();
 	function initModel() {
-		var rows = mazeModel.rows;
 		let html = "<table> <tr>";
 		let newL = false;
 		for (let i = 0; i < newRows.length; i++) {
-			console.log(i)
 			for (let j = 0; j < newRows[i].length; j++) {
-				console.log(newRows)
-				console.log(j)
 				let high = newRows[i][j].isHigh == true ? "high" : "low";
 				let wide = newRows[i][j].isWide == true ? "wide" : "small";
 				let open = newRows[i][j].isOpen == true ? "open" : "";
 				let wall = newRows[i][j].isWall == true ? "wall" : "";
 				newL = newRows[i][j].isRow == true ? newL = true : newL = false;
-				console.log(newL);
 				if (newL) {
 					html += `<tr class="${high} ${wide} ${open} ${wall}">`
 				} else {
 					html += `<td class="${high} ${wide} ${open} ${wall}"></td>`
 				}
-			}
 
+			}
 		}
 		appen.innerHTML = html + "</tr> </table>";
 	}
 
+	function godSaveMe(num) {
+		let pieceofshit;
+		for (let h = 0; h < num; h++) {
+			let thicc = h % 1 == 0 ? true : false;
+			let last = h == num ? true : false;
+			pieceofshit +=
+				`{ isHigh: false, isWide: ${thicc}, isOpen: false, isWall: true, isRow: ${last} },`
+			console.log(newRows)
+		}
+		newRows.push(pieceofshit);
+	}
+
 	function newRow(num) {
+		godSaveMe(num);
 		for (let f = 0; f < num; f++) {
+			for (let g = 0; g < num; g++) {
+				newRows.push(
+					[{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool() },]
+				);
+			}
 			newRows.push(
-				[{ isHigh: true, isWide: false, isOpen: randomBool(), isWall: randomBool() },
-				{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
-				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool() },
-				{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
-				{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool(), isRow: true }]
+				[
+					{ isHigh: true, isWide: false, isOpen: randomBool(), isWall: randomBool() },
+					{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
+					{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool() },
+					{ isHigh: false, isWide: true, isOpen: randomBool(), isWall: randomBool() },
+					{ isHigh: false, isWide: false, isOpen: randomBool(), isWall: randomBool(), isRow: true }]
 			);
 		}
 
