@@ -46,6 +46,7 @@
 		initModel();
 		updateView();
 
+
 		let gameInter = setInterval(() => move(), 100);
 
 		function updateView() {
@@ -61,6 +62,12 @@
 			var bodyPart = snakeModel.snakeHead;
 			while (bodyPart != null) {
 				var td = snakeTable.rows[bodyPart.y].cells[bodyPart.x];
+				//sjekke dette med terje
+				if (td.classList.contains("snake")) {
+					restart = true;
+					console.log(restart);
+					return;
+				}
 				td.classList.add('snake');
 				bodyPart = bodyPart.nextBodyPart;
 			}
@@ -68,6 +75,7 @@
 			var food = snakeModel.food;
 			var td = snakeTable.rows[food.y].cells[food.x];
 			td.classList.add('food');
+			console.log(td.x + " dette er td")
 		}
 
 		function initModel() {
@@ -93,7 +101,8 @@
 			};
 		}
 		function move() {
-			if (snakeModel.snakeHead.x > 30 || snakeModel.snakeHead.x <= -1 || snakeModel.snakeHead.y > 29 || snakeModel.snakeHead.y <= -1) {
+			if (snakeModel.snakeHead.x > 30 || snakeModel.snakeHead.x <= -1 || snakeModel.snakeHead.y > 29 ||
+				snakeModel.snakeHead.y <= -1 || restart == true) {
 				snakeTable.innerHTML += "<div>" + "Du har tapt " + "<button onclick='restartGame()'>Prøv på nytt?</button>" + "</div>";
 				restart = true;
 				clearInterval(gameInter);
