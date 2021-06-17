@@ -98,7 +98,6 @@
 				restart = true;
 				clearInterval(gameInter);
 				return;
-
 			}
 			if (!snakeModel.direction) return;
 			snakeModel.snakeHead = createNewSnakeHead();
@@ -145,7 +144,8 @@
 			initModel();
 			restart = false;
 			updateView();
-			gameInter = setInterval((gameInter) => move(), 100);
+			gameInter = setInterval((gameInter) =>
+				move(), 100);
 		}
 	</script>
 </body>
