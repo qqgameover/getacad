@@ -22,9 +22,7 @@ function fjernStolpen(index) {
     yesno = "disabled";
     yesno2 = "disabled";
     selectedElement = "ingen";
-    numbers = numbers.filter(function () {
-        return true;
-    });
+    numbers = numbers.filter(() => true)
     show();
     return `removed ${index}`;
 }
