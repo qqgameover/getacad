@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <div id="info"></div>
+    <div id="fluff" style="padding-bottom: 20px">
+      Gjør ett valg på hver linje:
+    </div>
+    Medvalgt drikke:
+    <input id="colaDrikke" type="radio" name="drikke" onchange="updateView()" />
+    Cola
+    <input
+      id="pepsiDrikke"
+      type="radio"
+      name="drikke"
+      onchange="updateView()"
+    />
+    Pepsi
+    <input
+      id="fantaDrikke"
+      type="radio"
+      name="drikke"
+      onchange="updateView()"
+    />
+    Fanta</br> Bunn:
+    <input id="tykkBunn" type="radio" name="bunn" onchange="updateView()" />Tykk
+    <input id="tynnBunn" type="radio" name="bunn" onchange="updateView()" />Tynn
+    <br />
+
+    Fyll:
+    <input id="fyllTaco" type="radio" name="fyll" onchange="updateView()" />Taco
+    <input
+      id="fyllKylling"
+      type="radio"
+      name="fyll"
+      onchange="updateView()"
+    />Kylling
+    <input
+      id="fyllPepperoni"
+      type="radio"
+      name="fyll"
+      onchange="updateView()"
+    />Pepperoni
+    <input
+      id="fyllSkinke"
+      type="radio"
+      name="fyll"
+      onchange="updateView()"
+    />Skinke<br />
+
+    Størrelse:
+    <input id="stor" type="radio" name="str" onchange="updateView()" />Stor
+    <input
+      id="middels"
+      type="radio"
+      name="str"
+      onchange="updateView()"
+    />Middels
+    <input
+      id="liten"
+      type="radio"
+      name="str"
+      onchange="updateView()"
+    />Liten<br />
+
+    <button id="bestill" disabled="" onclick="alert('Bestilt!');">
+      Bestill
+    </button>
+    <script>
+      let fluffTing = document.getElementById("fluff");
+      let appDiv = document.getElementById("app");
+      var btnBestill = document.getElementById("bestill");
+      var infoDiv = document.getElementById("info");
+      var bunnTykk = document.getElementById("tykkBunn");
+      var bunnTynn = document.getElementById("tynnBunn");
+      var fyllTaco = document.getElementById("fyllTaco");
+      var fyllKylling = document.getElementById("fyllKylling");
+      var fyllPepperoni = document.getElementById("fyllPepperoni");
+      let fyllSkinke = document.getElementById("fyllSkinke");
+      var strStor = document.getElementById("stor");
+      var strMiddels = document.getElementById("middels");
+      var strLiten = document.getElementById("liten");
+      let pepsiDrikke = document.getElementById("pepsiDrikke");
+      let colaDrikke = document.getElementById("colaDrikke");
+      let fantaDrikke = document.getElementById("fantaDrikke");
+
+      updateView();
+
+      function updateView() {
+        info = "";
+        let duharikke = "";
+        if (
+          (bunnTykk.checked || bunnTynn.checked) &&
+          (fyllTaco.checked ||
+            fyllKylling.checked ||
+            fyllPepperoni.checked ||
+            fyllSkinke.checked) && (fantaDrikke.checked || colaDrikke.checked || pepsiDrikke) &&
+          (strStor.checked || strMiddels.checked || strLiten.checked)
+        ) {
+          fluffTing.innerHTML = "";
+          duharikke = "Du har fylt ut alt og er klar til å bestille!";
+          btnBestill.disabled = false;
+        } else {
+          duharikke = "Du har ikke valgt:";
+          if (!bunnTykk.checked && !bunnTynn.checked) {
+            duharikke += "<li>bunn</li>";
+          }
+          if (
+            !fyllTaco.checked &&
+            !fyllKylling.checked &&
+            !fyllPepperoni.checked &&
+            !fyllSkinke.checked
+          ) {
+            duharikke += "<li>fyll</li>";
+          }
+          if (!strStor.checked && !strMiddels.checked && !strLiten.checked) {
+            duharikke += "<li>størrelse</li>";
+          }
+          if (
+            !pepsiDrikke.checked &&
+            !colaDrikke.checked &&
+            !fantaDrikke.checked)
+            {
+              duharikke += "<li>Drikke</li>"
+            }
+        }
+        infoDiv.innerHTML = duharikke;
+      }
+    </script>
+  </body>
+</html>
