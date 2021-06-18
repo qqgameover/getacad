@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <div id="info"></div>
+    <div id="app"></div>
+
+    <script>
+      //model
+      var txtDiv1 = document.getElementById("txt1");
+      var txtDiv2 = document.getElementById("txt2");
+      var txtDiv3 = document.getElementById("txt3");
+      let infoDiv = "";
+      let appen = document.getElementById("app");
+
+      updateView();
+      function updateView() {
+        let html = `
+          <input type="text" id="txt1" onchange="findFirst(this)" value="${txtDiv1 || ""}" /><br />
+          <input type="text" id="txt2" onchange="findFirst(this)" value="${txtDiv2 || ""}" /><br />
+          <input type="text" id="txt3" onchange="findFirst(this)" value="${txtDiv3 || ""}" /><br />
+          ${infoDiv}`;
+        appen.innerHTML = html
+      }
+
+      function findFirst(div) {
+        infoDiv = "";
+        if(div.id == "txt1") txtDiv1 = div.value
+        if(div.id == "txt2") txtDiv2 = div.value
+        if(div.id == "txt3") txtDiv3 = div.value
+
+        if (txtDiv1 == txtDiv2) infoDiv += "Tekst 1 og 2 er like<br/>";
+        if (txtDiv1 != txtDiv2) infoDiv += "<del>Tekst 1 og 2 er like</del><br/>";
+
+        if (txtDiv1 == txtDiv3) infoDiv += "Tekst 1 og 3 er like<br/>";
+        if (txtDiv1 != txtDiv3) infoDiv += "<del>Tekst 1 og 3 er like</del><br/>";
+        if (txtDiv3 == txtDiv2) infoDiv += "Tekst 2 og 3 er like<br/>";
+        if (txtDiv3 != txtDiv2) infoDiv += "<del>Tekst 2 og 3 er like</del><br/>";
+
+        infoDiv += "Om vi sorterer de tre tekstene, er denne den første:<br/>"
+
+        if (txtDiv1 <= txtDiv2) {
+          if (txtDiv3 <= txtDiv1) infoDiv += txtDiv3;
+          else infoDiv += txtDiv1;
+        } else {
+          if (txtDiv3 <= txtDiv2) infoDiv += txtDiv3;
+          else infoDiv += txtDiv2;
+        }
+        updateView();
+      } 
+    </script>
+  </body>
+</html>
