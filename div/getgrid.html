@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: system-ui;
+        }
+        div.page {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 10fr;
+            grid-template-rows: 1fr 10fr 1fr;
+            grid-template-areas: "header header"
+                                 "menu mainContent"
+                                 "menu footer";
+        }
+        div.footer {
+            background-color: blueviolet;
+            grid-area: footer;
+        }
+        div.header {
+            background-color: burlywood;
+            grid-area: header;
+        }
+        div.mainContent {
+            background-color: chocolate;
+            grid-area: mainContent;
+        }
+        div.menu {
+            background-color: crimson;
+            grid-area: menu;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">Header</div>
+        <div class="menu">Menu</div>
+        <div class="mainContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi optio quis, nemo consectetur nobis eaque quaerat quas sunt nulla.</div>
+        <div class="footer">Footer</div>
+    </div>
+</body>
+</html>
