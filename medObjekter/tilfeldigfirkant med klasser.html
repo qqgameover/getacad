@@ -37,10 +37,13 @@
 		class boxSet {
 			constructor() {
 				this._antall = Math.floor(Math.random() * 10)
+				if (this._antall === 0) {
+					this._antall = 1;
+				}
 			}
 			lagBokser() {
 				for (let i = 0; i < this._antall; i++) {
-					box._boxArray.push('<rect '
+					box._boxArray.push(`<rect id="${i}" onclick="boxView.removeBox(${i})"`
 						+ 'x="' + box.getX() + '" '
 						+ 'y="' + box.getY() + '" '
 						+ 'width="' + box.getWidth() + '" '
@@ -57,15 +60,22 @@
 			constructor(box) {
 				this._svg = document.getElementsByTagName('svg')[0];
 				this._boxer = boxer;
+				boxer.lagBokser();
 			}
 
 			show() {
 				var html = ""
 				for (let i = 0; i < box._boxArray.length; i++) {
-					html += box._boxArray[index];
+					html += box._boxArray[i];
 				}
-				console.log(html)
+				console.log(box._boxArray)
 				this._svg.innerHTML = html;
+			}
+			removeBox(index) {
+				delete box._boxArray[index];
+				//box._boxArray = box._boxArray.filter(() => true);
+				this.show();
+
 			}
 		}
 		var boxer = new boxSet();
