@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<svg width="1200" height="800">
+	</svg>
+	<script>
+		class Box {
+			constructor() {
+				this._boxArray = [];
+			}
+			getColor() {
+				return '#' + Math.floor(Math.random() * 16777215).toString(16); this._color;
+			}
+			getX() {
+				return Math.floor(Math.random() * 600);
+			}
+			getY() {
+				return Math.floor(Math.random() * 400);
+			}
+			getWidth() {
+				return 100 + Math.floor(Math.random() * 500);
+			}
+			getHeight() {
+				return 100 + Math.floor(Math.random() * 300);
+			}
+
+		}
+
+		class boxSet {
+			constructor() {
+				this._antall = Math.floor(Math.random() * 10)
+			}
+			lagBokser() {
+				for (let i = 0; i < this._antall; i++) {
+					box._boxArray.push('<rect '
+						+ 'x="' + box.getX() + '" '
+						+ 'y="' + box.getY() + '" '
+						+ 'width="' + box.getWidth() + '" '
+						+ 'height="' + box.getHeight() + '" '
+						+ 'fill="' + box.getColor() + '" '
+						+ '></rect>')
+				}
+				console.log(box._boxArray);
+				return this.allBoxes;
+			}
+		}
+
+		class BoxView {
+			constructor(box) {
+				this._svg = document.getElementsByTagName('svg')[0];
+				this._boxer = boxer;
+			}
+
+			show() {
+				var html = ""
+				for (let i = 0; i < box._boxArray.length; i++) {
+					html += box._boxArray[index];
+				}
+				console.log(html)
+				this._svg.innerHTML = html;
+			}
+		}
+		var boxer = new boxSet();
+		var box = new Box();
+		var boxView = new BoxView(box);
+		boxView.show();
+	</script>
+</body>
+
+</html>
