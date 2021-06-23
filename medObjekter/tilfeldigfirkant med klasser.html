@@ -42,8 +42,9 @@
 				}
 			}
 			lagBokser() {
+				box._boxArray = [];
 				for (let i = 0; i < this._antall; i++) {
-					box._boxArray.push(`<rect id="${i}" onclick="boxView.removeBox(${i})"`
+					box._boxArray.push(`<rect id="${i}" onclick="boxView.removeBox(this.id)"`
 						+ 'x="' + box.getX() + '" '
 						+ 'y="' + box.getY() + '" '
 						+ 'width="' + box.getWidth() + '" '
@@ -73,7 +74,6 @@
 			}
 			removeBox(index) {
 				delete box._boxArray[index];
-				//box._boxArray = box._boxArray.filter(() => true);
 				this.show();
 
 			}
