@@ -99,20 +99,30 @@
 		class currentBlock {
 			constructor() {
 				this._currentBlock = {
-					postion: { x: 5, y: 0 }
+					position: { x: 5, y: 0 }
 				};
 				this.placeBlock();
 			}
 			placeBlock() {
-				spillet._matrix[this._currentBlock.postion.y][this._currentBlock.postion.x] = 1
+				spillet._matrix[this._currentBlock.position.y][this._currentBlock.position.x] = 1
 			}
 			moveBlock() {
 				if (!this._currentBlock.direction) return;
-				let lastPosition = spillet._matrix[this._currentBlock.postion.y][this._currentBlock.postion.x]
-				spillet._matrix[this._currentBlock.postion.y + this._currentBlock.direction.y][this._currentBlock.postion.x + this._currentBlock.direction.x] = 1;
-				lastPosition = null;
+				this._lastPosition = {
+					x: this._currentBlock.position.x,
+					y: this._currentBlock.position.y,
+				}
+				this._currentBlock.position = {
+					x: this._currentBlock.position.x + this._currentBlock.direction.x,
+					y: this._currentBlock.position.y + this._currentBlock.direction.y
+				};
+				console.log(this._lastPosition)
+				this.removeLast();
 				this.placeBlock();
-				console.log(lastPosition);
+
+
+				console.log(this._lastPosition);
+				this._lastPosition = 0;
 				spillet.tegneOpp();
 
 			}
@@ -126,6 +136,9 @@
 				} else if (e.keyCode == 40) { // down
 					this._currentBlock.direction = { x: 0, y: 1 };
 				}
+			}
+			removeLast() {
+				spillet._matrix[this._lastPosition.y][this._lastPosition.x] = 0;
 			}
 		}
 
