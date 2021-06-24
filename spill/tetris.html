@@ -18,17 +18,23 @@
 		.first {
 			clear: left;
 		}
+
+		.brikke {
+			background-color: green;
+		}
 	</style>
 </head>
 
-<body onkeydown="return controlBlock(event)">
+<body onkeydown="return current.controlBlock(event)">
 	<div id="app"></div>
 
 
 
 	<script>
 		let appen = document.getElementById("app")
-
+		let gameInter = setInterval((gameInter) => {
+			current.moveBlock(), 100
+		})
 		class game {
 			constructor() {
 				this._Size = { x: 10, y: 20 }
@@ -47,17 +53,57 @@
 				let html = ""
 				for (let i = 0; i < this._globalArray.length; i++) {
 					let first = i % 10 == 0 ? "first" : "";
-					html += `<div class="cell ${first}"> </div>`
+					let occupied = this._globalArray[i]._isOccupied == 1 ? "brikke" : "";
+					html += `<div class="cell ${occupied} ${first}"></div>`
 				}
 				appen.innerHTML = html;
 			}
+
+
 		}
 		class cells {
 			constructor(indexy, indexx) {
 				this._index = { x: indexx, y: indexy }
-				this._isOccupied = false;
+				this._isOccupied = 0;
+			}
+			checkIfOccupied() {
+				if (this._isOccupied = 1) {
+
+				}
 			}
 
+		}
+		class currentBlock {
+			constructor() {
+				this._currentBlock = {
+					postion: { x: 5, y: 4 }
+				};
+				this.placeBlock();
+			}
+			placeBlock() {
+				spillet._globalArray[this._currentBlock.postion.x]._isOccupied = 1;
+				spillet._globalArray[this._currentBlock.postion.y]._isOccupied = 1;
+			}
+			moveBlock() {
+				this.moveCurrentBlockDownwards();
+				if (!this._currentBlock.direction) return;
+				this._currentBlock.x = this._currentBlock.x + this._currentBlock.direction.x;
+				this._currentBlock.y = this._currentBlock.y + this._currentBlock.direction.y;
+			}
+			controlBlock(e) {
+				if (e.keyCode == 37) { // left
+					this._currentBlock.direction = { x: -1, y: 0 };
+				} else if (e.keyCode == 39) { // right
+					this._currentBlock.direction = { x: 1, y: 0 };
+				} else if (e.keyCode == 40) { // down
+					this._currentBlock.direction = { x: 0, y: 1 };
+				}
+			}
+			moveCurrentBlockDownwards() {
+				if (!this._blockPlaced) {
+					this._currentBlock.direction = { x: 0, y: 1 }
+				}
+			}
 		}
 
 		class brikke {
@@ -67,13 +113,14 @@
 			getRandomType() {
 				let randomNum = Math.floor(Math.random() * 6)
 				if (randomNum === 1) {
-					this._type = { width: [1, 1], length: [1, 1] }
+					this._type = { line1: [1, 1], line2: [1, 1] }
 					this._turnType = "block"
 				} if (randomNum === 2) {
-					this._type = { width: [1, 1, 1], length: [0, 0, 1] }
-					this._turnType = "block"
+					this._type = { line1: [1, 1, 1], line2: [0, 0, 1] }
+					this._turnType = "l-shaped"
 				} if (randomNum === 3) {
-
+					this._type = { line1: [0, 1, 0], line2: [1, 1, 1] }
+					this._turnType = "t-shaped"
 				} if (randomNum === 4) {
 
 				} if (randomNum === 5) {
@@ -85,6 +132,7 @@
 		}
 		var spillet = new game;
 		spillet.initGame();
+		var current = new currentBlock;
 		spillet.tegneOpp();
 		console.log(spillet._globalArray)
 	</script>
