@@ -88,13 +88,14 @@
 				if (!this._currentBlock.direction) return;
 				this._currentBlock.postion.x = this._currentBlock.postion.x + this._currentBlock.direction.x;
 				this._currentBlock.postion.y = this._currentBlock.postion.y + this._currentBlock.direction.y;
+				spillet.tegneOpp();
 				this.placeBlock();
 			}
 			controlBlock(e) {
 				if (e.keyCode == 37) { // left
-					this._currentBlock.direction = { x: -1, y: 10 };
+					this._currentBlock.direction = { x: -1, y: 0 };
 				} else if (e.keyCode == 39) { // right
-					this._currentBlock.direction = { x: 1, y: 10 };
+					this._currentBlock.direction = { x: 1, y: 0 };
 				} else if (e.keyCode == 40) { // down
 					this._currentBlock.direction = { x: 0, y: 10 };
 				}
