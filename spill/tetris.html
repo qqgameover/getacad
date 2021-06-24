@@ -32,17 +32,37 @@
 
 	<script>
 		let appen = document.getElementById("app")
-		let gameInter = setInterval(() => current.moveBlock(), 100);
+		//let gameInter = setInterval(() => current.moveBlock(), 100);
 
 		class game {
 			constructor() {
-				this._Size = { x: 10, y: 20 }
 				this._globalArray = [];
+				this._matrix = [
+					[0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+					[0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+					[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 			}
 
 			initGame() {
-				for (let i = 0; i < this._Size.y; i++) {
-					for (let j = 0; j < this._Size.x; j++) {
+				for (let i = 0; i < this._matrix.length; i++) {
+					for (let j = 0; j < this._matrix[i].length; j++) {
 						let cell = new cells(i, j)
 						this._globalArray.push(cell)
 					}
@@ -50,10 +70,12 @@
 			}
 			tegneOpp() {
 				let html = ""
-				for (let i = 0; i < this._globalArray.length; i++) {
-					let first = i % 10 == 0 ? "first" : "";
-					let occupied = this._globalArray[i]._isOccupied == 1 ? "brikke" : "";
-					html += `<div class="cell ${occupied} ${first}"></div>`
+				for (let i = 0; i < this._matrix.length; i++) {
+					for (let j = 0; j < this._matrix[i].length; j++) {
+						let first = j % 10 == 0 ? "first" : "";
+						let occupied = this._matrix[i][j] == 1 ? "brikke" : "";
+						html += `<div class="cell ${occupied} ${first}"></div>`
+					}
 				}
 				appen.innerHTML = html;
 			}
@@ -81,21 +103,16 @@
 				this.placeBlock();
 			}
 			placeBlock() {
-				spillet._globalArray[this._currentBlock.postion.x]._isOccupied = 1;
-				spillet._globalArray[this._currentBlock.postion.y]._isOccupied = 1;
+				spillet._matrix[this._currentBlock.postion.y][this._currentBlock.postion.x] = 1
 			}
 			moveBlock() {
-				let lastPositionX = spillet._globalArray[this._currentBlock.postion.x];
-				let lastPositionY = spillet._globalArray[this._currentBlock.postion.y];
-
-				this._currentBlock.postion.x = this._currentBlock.postion.x + this._currentBlock.direction.x;
-				this._currentBlock.postion.y = this._currentBlock.postion.y + this._currentBlock.direction.y;
+				let lastPosition = spillet._matrix[this._currentBlock.postion.y][this._currentBlock.postion.x]
 
 				spillet._globalArray[this._currentBlock.postion.x + this._currentBlock.direction.x]._isOccupied = 1;
 				spillet._globalArray[this._currentBlock.postion.y + this._currentBlock.direction.y]._isOccupied = 1;
 
 				this.placeBlock();
-				lastPositionX._isOccupied = 0;
+				lastPosition = 0;
 				spillet.tegneOpp();
 
 			}
@@ -119,7 +136,9 @@
 			getRandomType() {
 				let randomNum = Math.floor(Math.random() * 6)
 				if (randomNum === 1) {
-					this._type = { line1: [1, 1], line2: [1, 1] }
+					this._matrix = [
+						[1, 1],
+						[1, 1]]
 					this._turnType = "block"
 				} if (randomNum === 2) {
 					this._type = { line1: [1, 1, 1], line2: [0, 0, 1] }
