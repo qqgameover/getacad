@@ -32,9 +32,8 @@
 
 	<script>
 		let appen = document.getElementById("app")
-		let gameInter = setInterval((gameInter) => {
-			current.moveBlock(), 100
-		})
+		let gameInter = setInterval(() => current.moveBlock(), 100);
+
 		class game {
 			constructor() {
 				this._Size = { x: 10, y: 20 }
@@ -86,23 +85,18 @@
 				spillet._globalArray[this._currentBlock.postion.y]._isOccupied = 1;
 			}
 			moveBlock() {
-				this.moveCurrentBlockDownwards();
 				if (!this._currentBlock.direction) return;
-				this._currentBlock.x = this._currentBlock.x + this._currentBlock.direction.x;
-				this._currentBlock.y = this._currentBlock.y + this._currentBlock.direction.y;
+				this._currentBlock.postion.x = this._currentBlock.postion.x + this._currentBlock.direction.x;
+				this._currentBlock.postion.y = this._currentBlock.postion.y + this._currentBlock.direction.y;
+				this.placeBlock();
 			}
 			controlBlock(e) {
 				if (e.keyCode == 37) { // left
-					this._currentBlock.direction = { x: -1, y: 0 };
+					this._currentBlock.direction = { x: -1, y: 10 };
 				} else if (e.keyCode == 39) { // right
-					this._currentBlock.direction = { x: 1, y: 0 };
+					this._currentBlock.direction = { x: 1, y: 10 };
 				} else if (e.keyCode == 40) { // down
-					this._currentBlock.direction = { x: 0, y: 1 };
-				}
-			}
-			moveCurrentBlockDownwards() {
-				if (!this._blockPlaced) {
-					this._currentBlock.direction = { x: 0, y: 1 }
+					this._currentBlock.direction = { x: 0, y: 10 };
 				}
 			}
 		}
