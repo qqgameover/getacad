@@ -32,32 +32,34 @@
                 }
             },
 
-            questions: [
-                {
-                    id: "1",
-                    tekst: "Er jorda flat?",
-                    alternativer: [
-                        "Ja", "Nei"
-                    ]
-                },
-                {
-                    id: "2",
-                    tekst: "Er månen laget av ost?",
-                    alternativer: [
-                        "Ja", "Nei"
-                    ]
-                }
-            ],
-            users: [
-                {
-                    id: "gud",
-                    navn: "Terje",
-                    rolle: "admin",
-                }, {
-                    id: "slave",
-                    navn: "egget",
-                    rolle: "bruker",
-                }],
+            data: {
+                questions: [
+                    {
+                        id: "1",
+                        tekst: "Er jorda flat?",
+                        alternativer: [
+                            "Ja", "Nei"
+                        ]
+                    },
+                    {
+                        id: "2",
+                        tekst: "Er månen laget av ost?",
+                        alternativer: [
+                            "Ja", "Nei"
+                        ]
+                    }
+                ],
+                users: [
+                    {
+                        id: "gud",
+                        navn: "Terje",
+                        rolle: "admin",
+                    }, {
+                        id: "slave",
+                        navn: "egget",
+                        rolle: "bruker",
+                    }],
+            },
 
 
             tidligerePolls: [
@@ -70,6 +72,18 @@
                             Ja: 34,
                             Nei: 0
                         },
+                    ],
+                    tidligereSvar: [
+                        {
+                            userNr: 1,
+                            answer: "Yes",
+                            Date: "10/08/21"
+                        },
+                        {
+                            userNr: 2,
+                            answer: "Yes",
+                            Date: "10/08/21"
+                        }
                     ],
                 }
             ]
